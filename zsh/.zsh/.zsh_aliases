@@ -1,0 +1,14 @@
+alias python="python3"
+
+alias ls="exa --icons --group-directories-first"
+alias ll="exa --icons --group-directories-first -lah"
+alias la="exa --icons --group-directories-first -a"
+alias l="exa --icons --group-directories-first --long"
+alias tree="exa --icons --group-directories-first --tree"
+
+alias cat="batcat"
+
+alias setwal="pushd ~/Pictures/Wallpapers/ && fzf | xargs -I {} wal -i "{}" && popd > /dev/null"
+
+alias update="sudo nala update"
+alias upgrade="sudo nala upgrade"
