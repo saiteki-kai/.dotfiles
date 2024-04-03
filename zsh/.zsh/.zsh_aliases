@@ -1,10 +1,15 @@
 alias python="python3"
 
-alias ls="exa --icons --group-directories-first"
-alias ll="exa --icons --group-directories-first -lah"
-alias la="exa --icons --group-directories-first -a"
-alias l="exa --icons --group-directories-first --long"
-alias tree="exa --icons --group-directories-first --tree"
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+alias ls="eza --icons --group-directories-first"
+alias ll="eza --icons --group-directories-first -lah"
+alias la="eza --icons --group-directories-first -a"
+alias l="eza --icons --group-directories-first --long"
+alias l.="eza --icons --group-directories-first -a | egrep '^\.'"
+alias tree="eza --icons --group-directories-first --tree -a"
 
 alias cat="batcat"
 
