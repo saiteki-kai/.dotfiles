@@ -25,7 +25,7 @@ return {
                 --      return { "--edition=2021" }
                 --  end,
                 --}),
-                null_ls.builtins.formatting.yamfmt,
+                null_ls.builtins.formatting.yamlfmt,
             },
         })
 
