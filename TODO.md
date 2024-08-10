@@ -1,3 +1,1 @@
 # TODO
-
-- [ ] bat theme
