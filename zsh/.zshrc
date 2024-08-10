@@ -10,7 +10,9 @@ HYPHEN_INSENSITIVE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Plugins
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions nvm)
+
+zstyle ':omz:plugins:nvm' lazy yes
 
 # Sources
 source $ZSH/oh-my-zsh.sh
@@ -21,8 +23,3 @@ source ~/.zsh/.zsh_keybindings
 export PROJECTS_DIR=${HOME}/MEGA/プロジェクト/進行中
 export GIT_PROJECT_DIR=${HOME}/MEGA/プロジェクト/github
 export BAT_THEME="Catppuccin-frappe"
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
