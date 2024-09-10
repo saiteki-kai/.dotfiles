@@ -20,6 +20,5 @@ source ~/.zsh/.zsh_aliases
 source ~/.zsh/.zsh_keybindings
 
 # Environment Variables
-export PROJECTS_DIR=${HOME}/MEGA/プロジェクト/進行中
-export GIT_PROJECT_DIR=${HOME}/MEGA/プロジェクト/github
+export PROJECTS_DIR=${HOME}/Documents/03_Projects
 export BAT_THEME="Catppuccin-frappe"
