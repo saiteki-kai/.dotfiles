@@ -1,0 +1,16 @@
+[repository]
+repository = "rclone:mega-backups:"
+password-file = "/home/giuseppe/.config/rustic/rustic-key"
+
+[backup]
+glob-file = "/home/giuseppe/.config/rustic/excludes.txt"
+git-ignore = true
+
+[[backup.sources]]
+source = "/home/giuseppe/Documents/"
+
+[forget]
+keep-daily = 1
+keep-weekly = 1
+keep-monthly = 1
+prune = true

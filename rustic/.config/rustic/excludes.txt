@@ -1,0 +1,34 @@
+# OS specific files
+!Thumbs.db
+!.DS_Store
+!.Trash-*
+
+# Generated files and folders
+!target/
+!build/
+!dist/
+!release/
+!debug/
+!coverage/
+
+# IDE settings
+!.vscode/
+!.idea/
+
+# Dependencies
+!node_modules/
+!.env/
+!env/
+!.venv/
+!venv/
+
+# Temporary and cache
+!.cache/
+!cache/
+!tmp/
+!*.log
+!*.tmp
+!*~
+
+# Specific files and folders
+!.vault_pass
