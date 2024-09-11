@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Wait for connection
+while ! nm-online -t 900; do
+    echo "Waiting for network connection..."
+done
+
 # Load healthchecks.io config
 CONFIG_FILE="$HOME/.config/rustic/healthchecks.conf"
 
