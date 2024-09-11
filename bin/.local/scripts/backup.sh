@@ -36,6 +36,8 @@ DATA_RAW=$(printf "%s\n%s\n\n%s\n%s\n" \
     "$ rustic backup" "$BACKUP_OUTPUT" \
     "$ rustic forget" "$FORGET_OUTPUT")
 
+BACKUP_LOG="/tmp/backup.log"
+
 if [[ $BACKUP_CODE -eq 0 && $FORGET_CODE -eq 0 ]]; then
     DATA_RAW_UNCOLOR=$(echo "$DATA_RAW" | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g')
 
@@ -43,11 +45,11 @@ if [[ $BACKUP_CODE -eq 0 && $FORGET_CODE -eq 0 ]]; then
     notify-send "Backup Successful" "$DATA_RAW_UNCOLOR" --icon=gtk-ok --app-name="Rustic"
 else
     send_ping "fail"
-    notify-send "Backup Error" "An error occurred during the backup process. See /tmp/backup.log" --icon=gtk-no --app-name="Rustic"
+    notify-send "Backup Error" "An error occurred during the backup process. See $BACKUP_LOG for details" --icon=gtk-no --app-name="Rustic"
 fi
 
 # Write the backup output to a file
-echo "$DATA_RAW" >/tmp/backup.log
+echo "$DATA_RAW" >$BACKUP_LOG
 
 # Check if the MEGA storage is full
 ./check-mega.sh
