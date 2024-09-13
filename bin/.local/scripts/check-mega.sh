@@ -1,14 +1,14 @@
 #!/bin/sh
 
-# check if the MEGA storage is full
+# Check if the MEGA storage is full
 
-MEGA_LIMIT=20000000000 # 20 GB
-MEGA_SIZE=$(rclone size mega-backups: --json | jq -r '.bytes')
+MEGA_INFO=$(rclone about mega-backups: --json)
 
-# rustic repoinfo --json | jq -r '.[] | select(.repo) | .repo | map(.size) | add'
+MEGA_USED=$(echo "$MEGA_INFO" | jq -r '.used')
+MEGA_TOTAL=$(echo "$MEGA_INFO" | jq -r '.total')
 
-if [ "$MEGA_SIZE" -gt "$MEGA_LIMIT" ]; then
-    MEGA_SIZE_READABLE=$(numfmt --to=iec-i --suffix=B --format="%.2f" "$MEGA_SIZE")
+if [ "$MEGA_USED" -gt "$MEGA_TOTAL" ]; then
+    MEGA_USED_READABLE=$(numfmt --to=iec-i --suffix=B --format="%.2f" "$MEGA_USED")
 
-    notify-send "Backup Error" "The MEGA storage is full at $MEGA_SIZE_READABLE" --icon=gtk-no --app-name="Rustic"
+    notify-send "Backup Error" "The MEGA storage is full at $MEGA_USED_READABLE" --icon=gtk-no --app-name="Rustic"
 fi
