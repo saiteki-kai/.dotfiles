@@ -21,4 +21,5 @@ source ~/.zsh/.zsh_keybindings
 
 # Environment Variables
 export PROJECTS_DIR=${HOME}/Documents/03_Projects
+export DOT_DIR=${PROJECTS_DIR}/.dotfiles
 export BAT_THEME="Catppuccin-frappe"
