@@ -1,11 +1,30 @@
 # Rustic Setup
 
-The folder `.config/rustic` contains the configuration files for [Rustic](https://github.com/rustic-rs/rustic) backups with MEGA cloud storage.
+Setup for Rustic backups with MEGA cloud storage.
+
+## Requirements
+
+- [Rclone](https://rclone.org/)
+- [Rustic](https://github.com/rustic-rs/rustic)
+- MEGA account
+- [Healthchecks.io](https://healthchecks.io/) account (optional)
+- Anacron (optional)
+
+## Configuration
 
 - `rustic.toml` Rustic configuration file
-- `excludes.txt`: Lists files and folders to exclude from backups (glob patterns)
 - `rustic-key` Contains the password for the MEGA repository
-- `healthchecks.conf` Contains the ping key for healthchecks.io (PING_KEY=\<your-key-here\>)
+- `ping-key` Contains the ping key for the healthchecks.io
+- `excludes.txt`: Lists files and folders to exclude from backups (glob patterns)
 
-The script `backup.sh` makes a backup, sends the backup report to healthchecks.io, and sends a notification of the result.
-The script is executed by anacron every 3 days with a delay of 5 minutes.
+Ensure that the key files have `600` permissions to secure their contents.
+
+## Scripts
+
+- `backup.sh` Executes the backup, pings healthchecks.io, and sends a notification of the result.
+- `check-mega.sh` Checks if the MEGA storage exceeds the limit and sends a notification if it does.
+
+## Scheduling
+
+The scripts are configured to run every 3 days using Anacron.
+If Anacron is not available, you can manually run the scripts as needed.
