@@ -92,12 +92,16 @@ perform_backup() {
     fi
 }
 
+check_mega() {
+    ~/.local/scripts/check-mega.sh
+}
+
 main() {
+    check_mega
     clear_backup_log
     wait_for_network
     load_ping_url
     perform_backup
-    ./check-mega.sh
 }
 
 main "$@"
