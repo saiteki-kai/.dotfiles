@@ -1,5 +1,7 @@
 # Rustic Setup
 
+![Laptop Backup](https://img.shields.io/endpoint?url=https%3A%2F%2Fhealthchecks.io%2Fb%2F2%2Fe0d13002-de16-449c-b332-7d19ae1c14e7.shields)
+
 Setup for Rustic backups with MEGA cloud storage.
 
 ## Requirements
