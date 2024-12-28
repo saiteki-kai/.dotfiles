@@ -1,14 +1,15 @@
 return {
-    {
-        "tpope/vim-fugitive",
-
-        config = function()
-            vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-        end,
-    },
-    {
-        "lewis6991/gitsigns.nvim",
-
-        config = true,
-    },
+    "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
+    config = true
+    -- {
+    --     "tpope/vim-fugitive",
+    --
+    --     lazy = true,
+    --     -- event = "VeryLazy,
+    --
+    --     config = function()
+    --         vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+    --     end,
+    -- },
 }
