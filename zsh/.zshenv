@@ -25,7 +25,7 @@ path=(
     $HOME/bin
     $HOME/.local/bin
     $HOME/.local/scripts
-    $HOME/Applications/flutter/bin
+    $HOME/Applications/Android/flutter/bin
 )
 
 # Remove duplicate entries
