@@ -43,5 +43,6 @@ return {
         statuscolumn = { enabled = true },
         -- input = { enabled = true },
         scope = { enabled = false },
+        lazygit = { enabled = true },
     },
 }
