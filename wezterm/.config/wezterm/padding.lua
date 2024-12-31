@@ -16,7 +16,7 @@ function M.setup()
             return
         end
 
-        if info.name == "nvim" then
+        if info.name == "nvim" or info.name == "tmux: client" then
             window:set_config_overrides({
                 window_padding = M.zero_padding,
             })
