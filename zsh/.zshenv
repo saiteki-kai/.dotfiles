@@ -7,7 +7,7 @@
 export LANG=en_US.UTF-8
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="kitty"
+export TERMINAL="ghostty"
 export COLORTERM="truecolor"
 
 # XDG base directories
@@ -26,6 +26,7 @@ path=(
     $HOME/.local/bin
     $HOME/.local/scripts
     $HOME/Applications/Android/flutter/bin
+    $HOME/.nvm/versions/node/v22.12.0/bin/
 )
 
 # Remove duplicate entries

@@ -1,0 +1,27 @@
+theme = catppuccin-macchiato
+window-theme = ghostty
+
+font-size    = 12
+font-family  = FiraCode
+font-style   = Retina
+
+font-feature = -liga
+font-feature = -clig
+font-feature = -calt
+font-feature = +zero
+font-feature = +cv05
+font-feature = +ss03
+font-feature = +ss05
+
+background-opacity = 0.85
+
+gtk-titlebar = false
+window-decoration = false
+
+window-width = 200
+window-height = 60
+
+window-padding-x = 0, 0
+window-padding-y = 0, 0
+
+keybind = ctrl+shift+r=reload_config
