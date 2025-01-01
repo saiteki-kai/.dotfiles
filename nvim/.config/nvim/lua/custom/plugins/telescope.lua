@@ -29,6 +29,7 @@ return {
                 find_files = {
                     hidden = true,
                     theme = "ivy",
+                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
                 },
                 live_grep = {
                     hidden = true,
