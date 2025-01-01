@@ -12,6 +12,7 @@ alias l.="eza --icons --group-directories-first -a | egrep '^\.'"
 alias tree="eza --icons --group-directories-first --tree -a"
 
 alias cat="batcat"
+alias bat="batcat"
 
 alias setwal="pushd ~/Pictures/Wallpapers/ && fzf | xargs -I {} wal -i "{}" && popd > /dev/null"
 
