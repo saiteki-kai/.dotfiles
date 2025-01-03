@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
     "nvim-telescope/telescope.nvim",
-    -- tag = "0.1.8",
 
     event = "VimEnter",
 
@@ -13,8 +12,7 @@ return {
                 return vim.fn.executable 'make' == 1
             end,
         },
-        -- "nvim-telescope/telescope-ui-select.nvim",
-    },
+    },   
 
     config = function()
         local builtin = require("telescope.builtin")
@@ -25,12 +23,15 @@ return {
                 -- NOTE: I use the cursor line to highlight the selection.
                 -- WARN: I will think about multi-selection later.
                 selection_caret = "  ",
+                file_ignore_patterns = {
+                    'node_modules',
+                    '.git',
+                },
             },
             pickers = {
                 find_files = {
                     hidden = true,
                     theme = "ivy",
-                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
                 },
                 live_grep = {
                     hidden = true,
@@ -40,16 +41,9 @@ return {
                     theme = "ivy",
                 },
             },
-            -- extensions = {
-            --     ['ui-select'] = {
-            --         require("telescope.themes").get_dropdown {},
-            --         require('telescope.themes').get_ivy {},
-            --     },
-            -- },
         })
 
         pcall(require('telescope').load_extension, 'fzf')
-        -- pcall(require('telescope').load_extension, 'ui-select')
 
         -- Custom keymaps
         vim.keymap.set("n", "<C-p>", builtin.find_files)
