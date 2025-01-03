@@ -11,3 +11,13 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Cycle buffers
 -- vim.keymap.set("n", "<C-S-j", ":bprev<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-S-k>", ":bnext<CR>", { noremap = true, silent = true })
+
+-- LSP
+vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+vim.keymap.set({"n","v"}, "<leader>ca", vim.lsp.buf.code_action, {})
+
+-- Indent
+vim.keymap.set('n', '<Tab>', '>0', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Tab>', '<0', { noremap = true, silent = true })
+vim.keymap.set('v', '<Tab>', '>gv', { noremap = true, silent = true })
+vim.keymap.set('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
