@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
     {
         "williamboman/mason.nvim",
@@ -20,15 +21,16 @@ return {
     {
         "neovim/nvim-lspconfig",
 
-        dependencies = {
-            'saghen/blink.cmp',
-            {
-                "folke/lazydev.nvim",
-                ft = "lua",
-                opts = {
-                    library = {
-                        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-                    },
+    dependencies = {
+        'saghen/blink.cmp',
+        {
+            "folke/lazydev.nvim",
+            ft = "lua",
+            opts = {
+                library = {
+                    "snacks.nvim",
+                    { path = "lazy.nvim", words = { "Lazy" } },
+                    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
                 },
             },
         },

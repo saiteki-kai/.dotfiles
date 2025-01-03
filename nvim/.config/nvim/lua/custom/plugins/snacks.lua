@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
     "folke/snacks.nvim",
 
@@ -5,6 +6,7 @@ return {
 
     lazy = false,
 
+    ---@type snacks.Config
     opts = {
         -- Warning when opening large files
         bigfile = { enabled = true },

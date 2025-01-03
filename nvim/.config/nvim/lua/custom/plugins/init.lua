@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
     -- { "pipoprods/nvm.nvim",          config = true }, -- load the nvm path for neovim
 
