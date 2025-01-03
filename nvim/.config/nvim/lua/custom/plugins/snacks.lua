@@ -13,7 +13,7 @@ return {
         -- Render file before loading plugins
         quickfile = { enabled = true },
         -- Smooth scrolling
-        scroll = { enabled = true },
+        scroll = { enabled = true, },
         -- Highlight same tokens in the file
         words = { enabled = true },
         -- Dashboard setup
@@ -43,7 +43,7 @@ return {
         },
         -- TODO: check possible config
         statuscolumn = { enabled = true },
-        -- input = { enabled = true },
+        input = { enabled = false },
         scope = { enabled = false },
         lazygit = { enabled = true },
     },

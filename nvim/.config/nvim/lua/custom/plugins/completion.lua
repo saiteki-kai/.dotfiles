@@ -6,6 +6,7 @@ return {
         version = 'v0.*',
 
         event = { 'InsertEnter' },
+
         dependencies = {
             'rafamadriz/friendly-snippets',
             -- "giuxtaposition/blink-cmp-copilot",
@@ -27,11 +28,13 @@ return {
             },
 
             completion = {
-                -- ghost_text = { enabled = true },
+                list = { selection = "auto_insert" },
+                menu = { border = "rounded" },
+                documentation = { window = { border = "rounded" } },
             },
 
             signature = {
-                enabled = true
+                window = { border = "rounded" },
             },
 
             sources = {
