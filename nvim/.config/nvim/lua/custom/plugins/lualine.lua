@@ -1,3 +1,42 @@
+local branch = {
+    "branch",
+    icon = "",
+}
+
+local filetype = {
+    "filetype",
+    fmt = function(str)
+        return str:gsub("^%l", string.upper)
+    end
+}
+
+local encoding = {
+    'o:encoding',
+    fmt = string.upper,
+}
+
+local fileformat = {
+    'fileformat',
+    icons_enabled = false,
+    -- File format like vscode
+    fmt = function(str)
+        if str == 'unix' then
+            return 'LF'
+        elseif str == 'dos' then
+            return 'CRLF'
+        elseif str == 'mac' then
+            return 'CR'
+        else
+            return str -- fallback
+        end
+    end,
+}
+
+local filename = {
+    "filename",
+    path = 3,
+}
+
 local lsp = {
     icon = "",
     function()
@@ -17,7 +56,6 @@ local lsp = {
                 table.insert(active_clients, client.name)
             end
         end
-
 
         if #active_clients == 0 then
             return empty_msg
@@ -58,13 +96,9 @@ return {
                         end,
                     },
                 },
-                lualine_b = { "branch", "diff" },
-                lualine_c = { "diagnostics" },
-                -- lualine_c = { "buffers" },
-                -- lualine_c = {
-                --     { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-                -- },
-                lualine_x = { lsp, 'filetype', 'encoding' },
+                lualine_b = { branch, "diff" },
+                lualine_c = { "diagnostics", filename },
+                lualine_x = { lsp, filetype, encoding, fileformat, },
             }
         },
     }
