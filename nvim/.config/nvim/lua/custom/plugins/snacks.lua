@@ -47,4 +47,9 @@ return {
         scope = { enabled = false },
         lazygit = { enabled = true },
     },
+
+    init = function ()
+        vim.keymap.set("n", "<leader>gl", ":lua Snacks.lazygit.log()<CR>", { silent = true, noremap = true })
+        vim.keymap.set("n", "<leader>go", ":lua Snacks.lazygit.open()<CR>", { silent = true, noremap = true })
+    end
 }
