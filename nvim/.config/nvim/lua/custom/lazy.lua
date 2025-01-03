@@ -34,16 +34,26 @@ require("lazy").setup({
         enabled = false,
         notify = false,
     },
-    rtp = {
-        disabled_plugins = {
-            "gzip",
-            "matchit",
-            "matchparen",
-            "netrwPlugin",
-            "tarPlugin",
-            "tohtml",
-            "tutor",
-            "zipPlugin",
+    performance = {
+        cache = {
+            enabled = true,
         },
+        reset_packpath = true,
+        rtp = {
+            reset = true,
+            disabled_plugins = {
+                "gzip",
+                "matchit",
+                "matchparen",
+                "netrwPlugin",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+            },
+        },
+    },
+    ui = {
+        border = 'rounded',
     },
 })

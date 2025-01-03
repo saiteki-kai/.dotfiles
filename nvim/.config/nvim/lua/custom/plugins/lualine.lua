@@ -2,7 +2,7 @@
 return {
     "nvim-lualine/lualine.nvim",
 
-    lazy = false,
+    event = { 'BufReadPost', 'BufNewFile' },
 
     opts = {
         options = {

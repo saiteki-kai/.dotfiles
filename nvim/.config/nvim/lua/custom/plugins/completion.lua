@@ -5,6 +5,7 @@ return {
 
         version = 'v0.*',
 
+        event = { 'InsertEnter' },
         dependencies = {
             'rafamadriz/friendly-snippets',
             -- "giuxtaposition/blink-cmp-copilot",

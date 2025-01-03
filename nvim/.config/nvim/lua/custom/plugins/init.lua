@@ -1,27 +1,23 @@
 ---@type LazySpec
 return {
-    -- { "pipoprods/nvm.nvim",          config = true }, -- load the nvm path for neovim
-
     -- Dependencies for multiple modules
     { "nvim-lua/plenary.nvim",       lazy = true },
     { "nvim-tree/nvim-web-devicons", lazy = true },
 
-    -- Automatic tabs detection
-    'tpope/vim-sleuth',
-
     -- Special Comments
     {
         "folke/todo-comments.nvim",
-        lazy = false,
+        event = { 'BufReadPost', 'BufNewFile' },
         opts = { signs = false },
     },
 
     -- Block Comments
     {
         "numToStr/Comment.nvim",
-        lazy = false,
+        event = { 'BufReadPost', 'BufNewFile' },
         opts = {},
     },
+    { "stevearc/dressing.nvim", event = "VeryLazy" },
 }
 
 -- TODO:
@@ -31,10 +27,9 @@ return {
 --  2       filepath in the status line
 --  3       indentation keymap
 --  4       git setup (commit tree, status) using lazygit integrated with snacks.nvim
-
-
--- ? neogen (documentation)
--- ? noice
--- debugger
--- diagnostics
--- multi cursor
+--  5       rewrite LSP configuration
+--  6       refine completion with AI
+--  7       formatting ?
+--  8       multi cursor
+--  9       debugger / diagnostics / quickfix lists
+--  10      neogen (documentation generation)
