@@ -1,1 +1,23 @@
-bindkey -s '^p' 'tmux-session\n'
+# See man pages of "zshzle" and "zshmisc" for widget documentation
+
+# Define widget functions
+
+toggle_terminal_blur_widget () {
+    toggle-terminal-blur
+}
+
+tmux_session_widget () {
+    tmux-session 
+}
+
+# Load and register widgets
+
+autoload -Uz tmux_session_widget toggle_terminal_blur_widget
+
+zle -N tmux_session_widget
+zle -N toggle_terminal_blur_widget
+
+# Add keybindings
+
+bindkey '^p' tmux_session_widget            # CTRL+P        open tmux sessionizer
+bindkey '^[^B' toggle_terminal_blur_widget  # CTRL+ALT+B    toggle terminal blur

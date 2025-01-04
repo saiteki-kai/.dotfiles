@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Toggle the blur property of 'blur-my-shell' extension for specified applications
+# 
+# I use this script to toggle the terminal background blur (kitty, wezterm, ghostty)
+
+path="/org/gnome/shell/extensions/blur-my-shell/applications/blur"
+
+current_value=$(dconf read $path)
+
+if [[ "$current_value" == "false" ]]; then
+    dconf write $path "true"
+else
+    dconf write $path "false"
+fi
