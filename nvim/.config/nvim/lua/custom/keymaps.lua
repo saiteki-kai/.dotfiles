@@ -21,3 +21,5 @@ vim.keymap.set('n', '<Tab>', '>0', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Tab>', '<0', { noremap = true, silent = true })
 vim.keymap.set('v', '<Tab>', '>gv', { noremap = true, silent = true })
 vim.keymap.set('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
+
+vim.keymap.set("n", "<C-A-B>", ":silent exec '!toggle-terminal-blur'<CR>", { noremap = true, silent = true })
