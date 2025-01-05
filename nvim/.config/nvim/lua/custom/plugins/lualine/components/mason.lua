@@ -48,4 +48,3 @@ M.component = {
 }
 
 return M
-

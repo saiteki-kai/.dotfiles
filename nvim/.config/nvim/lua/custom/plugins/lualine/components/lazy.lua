@@ -1,4 +1,4 @@
-local get_update_count = function ()
+local get_update_count = function()
     return "󰒲 " .. #require("lazy.manage.checker").updated
 end
 

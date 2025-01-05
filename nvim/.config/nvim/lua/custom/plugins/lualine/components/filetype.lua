@@ -4,4 +4,3 @@ return {
         return str:gsub("^%l", string.upper)
     end
 }
-
