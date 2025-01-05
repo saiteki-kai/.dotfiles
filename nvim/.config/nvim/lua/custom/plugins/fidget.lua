@@ -7,7 +7,7 @@ return {
     opts = {
         progress = {
             display = {
-                done_ttl = 10,
+                done_ttl = 5,
                 done_icon = "󰄬",
             },
         },
@@ -17,7 +17,7 @@ return {
             },
             window = {
                 align = "top",
-                y_padding = 0, -- number of cells
+                y_padding = 1, -- number of cells
             },
         },
     },

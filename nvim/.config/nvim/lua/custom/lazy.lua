@@ -34,6 +34,12 @@ require("lazy").setup({
         enabled = false,
         notify = false,
     },
+    checker = {
+        enabled = true,
+        notify = false,
+        frequency = 3600,
+        check_pinned = true,
+    },
     performance = {
         cache = {
             enabled = true,
@@ -55,5 +61,8 @@ require("lazy").setup({
     },
     ui = {
         border = 'rounded',
+        icons = {
+            plugin = "󰒲 ",
+        }
     },
 })

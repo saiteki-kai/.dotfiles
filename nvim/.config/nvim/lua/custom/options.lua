@@ -21,11 +21,12 @@ opt.scrolloff = 10
 -- Appearence
 opt.guicursor = ""
 opt.termguicolors = true
-opt.showcmd = false
+opt.showcmdloc = "tabline"
+opt.showcmd = true
 opt.showmode = false
 opt.signcolumn = "yes"
 opt.completeopt = "menuone,noinsert,noselect"
-opt.cursorline = true
+-- opt.cursorline = true
 opt.winblend = 0
 opt.pumblend = 10
 opt.pumheight = 10
@@ -53,7 +54,7 @@ opt.isfname:append("@-@")
 opt.iskeyword:append("-")
 opt.mouse:append("a")
 opt.updatetime = 250
-opt.timeoutlen = 300
+opt.timeoutlen = 500
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
