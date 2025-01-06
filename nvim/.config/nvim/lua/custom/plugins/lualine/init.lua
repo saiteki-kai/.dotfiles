@@ -37,10 +37,4 @@ return {
             lualine_y = { "searchcount", "progress" },
         },
     },
-
-    init = function()
-        -- require("lazy.manage.checker").check()
-        local updates = mason.get_update_count()
-        print(updates)
-    end
 }
