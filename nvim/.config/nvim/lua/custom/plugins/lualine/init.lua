@@ -8,6 +8,7 @@ local lsp = require("custom.plugins.lualine.components.lsp")
 local lazy = require("custom.plugins.lualine.components.lazy")
 local mason = require("custom.plugins.lualine.components.mason")
 
+---@module "lazy"
 ---@type LazySpec
 return {
     "nvim-lualine/lualine.nvim",

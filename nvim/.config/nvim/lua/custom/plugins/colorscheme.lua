@@ -1,3 +1,4 @@
+---@module "lazy"
 ---@type LazySpec
 return {
     "catppuccin/nvim",
@@ -12,9 +13,9 @@ return {
             snacks = true,
             fidget = true,
             blink_cmp = true,
-       }
+        }
     },
     init = function()
-      vim.cmd([[colorscheme catppuccin]])
+        vim.cmd([[colorscheme catppuccin]])
     end
 }

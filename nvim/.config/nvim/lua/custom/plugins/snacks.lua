@@ -1,11 +1,12 @@
+---@module "lazy"
 ---@type LazySpec
 return {
     "folke/snacks.nvim",
 
     priority = 1000,
-
     lazy = false,
 
+    ---@module "snacks"
     ---@type snacks.Config
     opts = {
         -- Warning when opening large files
@@ -48,7 +49,7 @@ return {
         lazygit = { enabled = true },
     },
 
-    init = function ()
+    init = function()
         vim.keymap.set("n", "<leader>gl", ":lua Snacks.lazygit.log()<CR>", { silent = true, noremap = true })
         vim.keymap.set("n", "<leader>go", ":lua Snacks.lazygit.open()<CR>", { silent = true, noremap = true })
     end

@@ -1,3 +1,4 @@
+---@module "lazy"
 ---@type LazySpec
 return {
     {
@@ -12,6 +13,8 @@ return {
             -- "giuxtaposition/blink-cmp-copilot",
         },
 
+        ---@module "blink.cmp"
+        ---@type blink.cmp.Config
         opts = {
             keymap = {
                 preset = 'default',

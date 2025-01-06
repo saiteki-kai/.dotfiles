@@ -1,3 +1,4 @@
+---@module "lazy"
 ---@type LazySpec
 return {
     "nvim-treesitter/nvim-treesitter",
@@ -6,6 +7,8 @@ return {
 
     build = ":TSUpdate",
 
+    ---@module "nvim-treesitter"
+    ---@type TSConfig
     opts = {
         indent = {
             enable = true,

@@ -1,3 +1,4 @@
+---@module "lazy"
 ---@type LazySpec
 return {
     "nvim-telescope/telescope.nvim",
@@ -12,12 +13,12 @@ return {
                 return vim.fn.executable 'make' == 1
             end,
         },
-    },   
+    },
 
     config = function()
-        local builtin = require("telescope.builtin")
+        local telescope = require("telescope")
 
-        require("telescope").setup({
+        telescope.setup({
             defaults = {
                 prompt_prefix = "   ",
                 -- NOTE: I use the cursor line to highlight the selection.
@@ -43,9 +44,11 @@ return {
             },
         })
 
-        pcall(require('telescope').load_extension, 'fzf')
+        pcall(telescope.load_extension, 'fzf')
 
         -- Custom keymaps
+        local builtin = require("telescope.builtin")
+
         vim.keymap.set("n", "<C-p>", builtin.find_files)
         vim.keymap.set("n", "<leader>fg", builtin.live_grep)
         vim.keymap.set("n", "<leader>gf", builtin.git_files)
