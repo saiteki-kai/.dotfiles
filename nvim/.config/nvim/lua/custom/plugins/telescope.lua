@@ -7,10 +7,10 @@ return {
 
     dependencies = {
         {
-            'nvim-telescope/telescope-fzf-native.nvim',
-            build = 'make',
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make",
             cond = function()
-                return vim.fn.executable 'make' == 1
+                return vim.fn.executable("make") == 1
             end,
         },
     },
@@ -25,8 +25,8 @@ return {
                 -- WARN: I will think about multi-selection later.
                 selection_caret = "  ",
                 file_ignore_patterns = {
-                    'node_modules',
-                    '.git',
+                    "node_modules",
+                    ".git",
                 },
             },
             pickers = {
@@ -44,7 +44,7 @@ return {
             },
         })
 
-        pcall(telescope.load_extension, 'fzf')
+        pcall(telescope.load_extension, "fzf")
 
         -- Custom keymaps
         local builtin = require("telescope.builtin")
@@ -55,7 +55,7 @@ return {
         vim.keymap.set("n", "<leader>h", builtin.help_tags)
         vim.keymap.set("n", "<leader>c", function()
             builtin.find_files({
-                cwd = vim.fn.stdpath("config")
+                cwd = vim.fn.stdpath("config"),
             })
         end)
     end,

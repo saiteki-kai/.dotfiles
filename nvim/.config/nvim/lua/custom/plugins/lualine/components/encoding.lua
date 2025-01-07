@@ -1,4 +1,4 @@
 return {
-    'encoding',
+    "encoding",
     fmt = string.upper,
 }

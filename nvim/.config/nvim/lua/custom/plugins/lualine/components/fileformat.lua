@@ -1,9 +1,9 @@
 return {
-    'fileformat',
+    "fileformat",
     icons_enabled = true,
     symbols = {
-        unix = 'LF',
-        dos = 'CRLF',
-        mac = 'CR',
+        unix = "LF",
+        dos = "CRLF",
+        mac = "CR",
     },
 }

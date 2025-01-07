@@ -3,7 +3,7 @@
 return {
     "j-hui/fidget.nvim",
 
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = { "BufReadPre", "BufNewFile" },
 
     opts = {
         progress = {

@@ -1,7 +1,6 @@
 local async = require("plenary.async")
 local mason_registry = require("mason-registry")
 
-
 local M = {}
 
 -- TODO: check if there is a scheduler of the checker like lazy
@@ -49,7 +48,7 @@ M.component = {
         return M.get_update_count()
     end,
     cond = function()
-        return M.cached_count ~= 1 
+        return M.cached_count ~= 1
     end,
     on_click = function()
         vim.cmd("Mason")

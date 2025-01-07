@@ -3,7 +3,7 @@
 return {
     "nvim-treesitter/nvim-treesitter",
 
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = { "BufReadPost", "BufNewFile" },
 
     build = ":TSUpdate",
 
@@ -36,5 +36,5 @@ return {
             "rust",
         },
         auto_install = true,
-    }
+    },
 }

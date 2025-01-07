@@ -26,12 +26,12 @@ opt.showcmd = true
 opt.showmode = false
 opt.signcolumn = "yes"
 opt.completeopt = "menuone,noinsert,noselect"
--- opt.cursorline = true
+opt.cursorline = true
 opt.winblend = 0
 opt.pumblend = 0
 opt.pumheight = 10
 opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Search
 opt.hlsearch = false
@@ -61,7 +61,7 @@ opt.timeoutlen = 500
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-    vim.opt.clipboard = 'unnamedplus'
+    vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Netrw file explorer settings

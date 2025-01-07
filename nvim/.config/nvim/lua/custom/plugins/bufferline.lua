@@ -1,7 +1,7 @@
 ---@module "lazy"
 ---@type LazySpec
 return {
-    'akinsho/bufferline.nvim',
+    "akinsho/bufferline.nvim",
 
     version = "*",
 
@@ -13,12 +13,12 @@ return {
                 separator_style = "thick",
                 -- numbers = "ordinal",
                 indicator = {
-                    style = 'none'
+                    style = "none",
                 },
                 show_buffer_close_icon = false,
                 show_close_icon = false,
-                diagnostics = "nvim_lsp"
-            }
+                diagnostics = "nvim_lsp",
+            },
         })
-    end
+    end,
 }

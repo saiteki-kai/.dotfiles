@@ -1,7 +1,7 @@
 return {
     icon = "",
     function()
-        local empty_msg = ''
+        local empty_msg = ""
 
         local clients = vim.lsp.get_clients()
 
@@ -21,7 +21,7 @@ return {
         if #active_clients == 0 then
             return empty_msg
         else
-            return table.concat(active_clients, ', ')
+            return table.concat(active_clients, ", ")
         end
     end,
 }

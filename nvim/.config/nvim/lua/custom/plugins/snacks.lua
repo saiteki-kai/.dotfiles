@@ -14,7 +14,7 @@ return {
         -- Render file before loading plugins
         quickfile = { enabled = true },
         -- Smooth scrolling
-        scroll = { enabled = true, },
+        scroll = { enabled = true },
         -- Highlight same tokens in the file
         words = { enabled = true },
         -- Dashboard setup
@@ -52,5 +52,5 @@ return {
     init = function()
         vim.keymap.set("n", "<leader>gl", ":lua Snacks.lazygit.log()<CR>", { silent = true, noremap = true })
         vim.keymap.set("n", "<leader>go", ":lua Snacks.lazygit.open()<CR>", { silent = true, noremap = true })
-    end
+    end,
 }
