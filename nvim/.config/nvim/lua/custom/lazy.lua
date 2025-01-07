@@ -60,9 +60,10 @@ require("lazy").setup({
         },
     },
     ui = {
-        border = 'rounded',
+        border = "rounded",
+        backdrop = 100,
         icons = {
             plugin = "󰒲 ",
-        }
+        },
     },
 })

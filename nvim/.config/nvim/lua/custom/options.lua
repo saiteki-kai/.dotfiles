@@ -28,7 +28,7 @@ opt.signcolumn = "yes"
 opt.completeopt = "menuone,noinsert,noselect"
 -- opt.cursorline = true
 opt.winblend = 0
-opt.pumblend = 10
+opt.pumblend = 0
 opt.pumheight = 10
 opt.list = true
 opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }

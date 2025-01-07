@@ -2,14 +2,15 @@
 ---@type LazySpec
 return {
     {
-        'saghen/blink.cmp',
+        "saghen/blink.cmp",
 
-        version = '*',
+        version = "*",
+        build = "cargo build --release",
 
-        event = { 'InsertEnter' },
+        event = { "InsertEnter" },
 
         dependencies = {
-            'rafamadriz/friendly-snippets',
+            "rafamadriz/friendly-snippets",
             -- "giuxtaposition/blink-cmp-copilot",
         },
 
@@ -17,27 +18,46 @@ return {
         ---@type blink.cmp.Config
         opts = {
             keymap = {
-                preset = 'default',
+                preset = "default",
 
-                ['<Up>'] = { 'select_prev', 'fallback' },
-                ['<Down>'] = { 'select_next', 'fallback' },
+                ["<Up>"] = { "select_prev", "fallback" },
+                ["<Down>"] = { "select_next", "fallback" },
 
-                ['<Enter>'] = { 'select_and_accept', 'fallback' }
+                ["<Enter>"] = { "select_and_accept", "fallback" },
             },
 
             appearance = {
                 use_nvim_cmp_as_default = true,
-                nerd_font_variant = 'mono'
+                nerd_font_variant = "mono",
             },
 
             completion = {
                 list = { selection = "auto_insert" },
-                menu = { border = "rounded" },
-                documentation = { window = { border = "rounded" } },
-            },
+                menu = {
+                    border = "rounded",
+                    draw = {
+                        gap = 1,
+                        padding = 1,
+                        columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+                    },
+                    winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
+                },
 
+                documentation = {
+                    window = {
+                        border = "rounded",
+                        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+                    },
+                    auto_show = true,
+                    auto_show_delay_ms = 200,
+                    update_delay_ms = 50,
+                },
+            },
             signature = {
-                window = { border = "rounded" },
+                window = {
+                    border = "rounded",
+                    winhighlight = "Normal:None,FloatBorder:FloatBorder",
+                },
             },
 
             sources = {
@@ -47,17 +67,19 @@ return {
                     lazydev = {
                         name = "LazyDev",
                         module = "lazydev.integrations.blink",
-                        score_offset = 100
-                    }
+                        score_offset = 100,
+                    },
                     -- copilot = {
                     --     name = "copilot",
                     --     module = "blink-cmp-copilot",
                     --     score_offset = 100,
                     --     async = true,
                     -- },
-                }
-            }
-        }
+                },
+            },
+        },
+
+        opts_extend = { "sources.default" },
     },
     -- {
     --     "zbirenbaum/copilot.lua",

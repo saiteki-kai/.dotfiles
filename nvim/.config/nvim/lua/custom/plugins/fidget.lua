@@ -19,6 +19,7 @@ return {
             window = {
                 align = "top",
                 y_padding = 1, -- number of cells
+                winblend = 0,
             },
         },
     },
