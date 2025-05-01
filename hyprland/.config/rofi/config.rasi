@@ -1,0 +1,22 @@
+configuration {
+    font: "Noto Sans CJK JP Regular 14";
+    prompt: "Run: ";
+    show-icons: true;
+    steal-focus: true;
+    terminal: "ghostty";
+    sort: true;
+    sorting-method: "normal";
+    case-sensitive: false;  
+    drun-show-actions: true;
+    drun-display-format: "{name}";
+    timeout {
+        action: "kb-cancel";
+        delay: 0;
+    }
+    filebrowser {
+        directories-first: true;
+        sorting-method: "name";
+    }
+}
+
+@theme "catppuccin-default"
