@@ -13,4 +13,3 @@ sources = ["/home/giuseppe/Documents/"]
 keep-daily = 7
 keep-weekly = 4
 keep-monthly = 3
-prune = true

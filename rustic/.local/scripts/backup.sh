@@ -9,7 +9,8 @@ log() {
     local timestamp
     timestamp=$(date +"%Y-%m-%d %H:%M:%S")
 
-    printf "%s %s\n" "$timestamp" "$1" >>"$BACKUP_LOG"
+    printf "[%s] %s\n" "$timestamp" "$1" >>"$BACKUP_LOG"
+    printf "[%s] %s\n" "$timestamp" "$1"
 }
 
 clear_backup_log() {
@@ -61,31 +62,53 @@ perform_backup() {
     # Ping to track the duration
     send_ping "start"
 
-    log "Starting backup"
+    local start_time=$(date +%s)
 
-    local backup_output backup_code forget_output forget_code data_raw
+    # Trap to remove temporary files on exit
+    trap 'rm -f "$BACKUP_OUTPUT_TMP" "$FORGET_OUTPUT_TMP" "$PRUNE_OUTPUT_TMP"' EXIT
+
+    # Create temporary files
+    readonly BACKUP_OUTPUT_TMP=$(mktemp)
+    readonly FORGET_OUTPUT_TMP=$(mktemp)
+    readonly PRUNE_OUTPUT_TMP=$(mktemp)
 
     # Execute backup and capture output
-    backup_output=$(rustic backup 2>&1)
-    backup_code=$?
+    log "Rustic Backup:"
+    rustic backup 2>&1 | tee -a "$BACKUP_LOG" "$BACKUP_OUTPUT_TMP"
+    local backup_code=${PIPESTATUS[0]}
 
     # Execute forget and capture output
-    forget_output=$(rustic forget 2>&1)
-    forget_code=$?
+    log "Rustic Forget:"
+    rustic forget 2>&1 | tee -a "$BACKUP_LOG" "$FORGET_OUTPUT_TMP"
+    local forget_code=${PIPESTATUS[0]}
 
-    log "$(printf "Rustic Backup:\n%s" "$backup_output")"
-    log "$(printf "Rustic Forget:\n%s" "$forget_output")"
+    # Execute prune and capture output
+    log "Rustic Prune:"
+    rustic prune --max-repack=0 2>&1 | tee -a "$BACKUP_LOG" "$PRUNE_OUTPUT_TMP"
+    local prune_code=${PIPESTATUS[0]}
 
-    data_raw=$(printf "%s\n%s\n\n%s\n%s\n" \
-        "$ rustic backup" "$backup_output" \
-        "$ rustic forget" "$forget_output")
+    local end_time=$(date +%s)
+    local duration=$((end_time - start_time))
 
-    if [[ "$backup_code" -eq 0 && "$forget_code" -eq 0 ]]; then
+    local notification_body="Took $(($duration / 60)) minutes and $(($duration % 60)) seconds."
+
+    if [[ "$backup_code" -eq 0 ]]; then
         local data_raw_uncolor
-        data_raw_uncolor=$(echo "$data_raw" | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g')
+        data_raw_uncolor=$(cat "$BACKUP_LOG" | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g')
 
         send_ping "0" "$data_raw_uncolor"
-        notify-send "Backup Successful" "$data_raw_uncolor" --icon=gtk-ok --app-name="Rustic"
+        notify-send "Backup Successful" "$notification_body" --icon=gtk-ok --app-name="Rustic"
+
+        if [[ "$forget_code" -ne 0 ]]; then
+            log "Error: Rustic forget operation failed."
+            notify-send "Backup Error" "Rustic forget operation failed." --icon=gtk-warning --app-name="Rustic"
+        fi
+
+        if [[ "$prune_code" -ne 0 ]]; then
+            log "Error: Rustic prune operation failed."
+            notify-send "Backup Error" "Rustic prune operation failed." --icon=gtk-warning --app-name="Rustic"
+        fi
+
     else
         send_ping "fail"
         notify-send "Backup Error" "An error occurred during the backup process. See $BACKUP_LOG for details" --icon=gtk-no --app-name="Rustic"
