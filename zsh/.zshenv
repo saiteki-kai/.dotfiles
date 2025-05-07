@@ -25,8 +25,6 @@ path=(
     $HOME/bin
     $HOME/.local/bin
     $HOME/.local/scripts
-    $HOME/Applications/Android/flutter/bin
-    $HOME/.nvm/versions/node/v22.12.0/bin/
 )
 
 # Remove duplicate entries
@@ -35,6 +33,3 @@ path=($^path(N-/))
 
 # Export the updated PATH
 export PATH
-
-# Source cargo environment
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
