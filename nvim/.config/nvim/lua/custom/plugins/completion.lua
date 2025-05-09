@@ -4,7 +4,7 @@ return {
     {
         "saghen/blink.cmp",
 
-        version = "*",
+        -- version = "*",
         build = "cargo build --release",
 
         event = { "InsertEnter" },
@@ -32,13 +32,13 @@ return {
             },
 
             completion = {
-                list = { selection = "auto_insert" },
+                list = { selection = { auto_insert = true, preselect = true } },
                 menu = {
                     border = "rounded",
                     draw = {
                         gap = 1,
                         padding = 1,
-                        columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+                        columns = { { "label", "label_description", gap = 1 }, { "kind_icon", gap = 1, "kind" } },
                     },
                     winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
                 },
@@ -60,9 +60,10 @@ return {
                 },
             },
 
+            cmdline = { enabled = false },
+
             sources = {
                 default = { "lazydev", "lsp", "path", "snippets", "buffer" }, -- , "copilot" },
-                cmdline = {},
                 providers = {
                     lazydev = {
                         name = "LazyDev",

@@ -3,11 +3,14 @@
 Next steps:
 
 - [x] background, theme, transparency
+- [ ] remove cursor line in mason
+- [ ] update location and progress in lualine
 - [ ] rewrite LSP configuration
 - [ ] nvim tree
 - [ ] configure telescope
 - [ ] multi cursor, change indenting keybindings
 - [ ] debugger / diagnostics (trouble.nvim, ..) / quickfix lists
+- [ ] lualine debugger in tabline
 - [ ] ai completion
 - [ ] neogen (documentation generation)
 - [ ] view git edits in a line / block

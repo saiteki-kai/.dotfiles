@@ -36,5 +36,6 @@ return {
             "rust",
         },
         auto_install = true,
+        sync_install = true,
     },
 }

@@ -47,9 +47,6 @@ M.component = {
 
         return M.get_update_count()
     end,
-    cond = function()
-        return M.cached_count ~= 1
-    end,
     on_click = function()
         vim.cmd("Mason")
     end,
