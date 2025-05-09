@@ -1,5 +1,0 @@
-# user configuration file for anacron
-SHELL=/bin/sh
-
-# period  delay  job-identifier  command
-3         5      backup_job      /home/giuseppe/.local/scripts/backup.sh

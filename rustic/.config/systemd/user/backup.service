@@ -1,0 +1,6 @@
+[Unit]
+Description=Run Backup Script
+
+[Service]
+Type=oneshot
+ExecStart=/home/giuseppe/.local/scripts/backup.sh
