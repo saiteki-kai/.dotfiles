@@ -62,15 +62,20 @@ perform_backup() {
     # Ping to track the duration
     send_ping "start"
 
-    local start_time=$(date +%s)
+    local start_time
+    start_time=$(date +%s)
 
     # Trap to remove temporary files on exit
     trap 'rm -f "$BACKUP_OUTPUT_TMP" "$FORGET_OUTPUT_TMP" "$PRUNE_OUTPUT_TMP"' EXIT
 
     # Create temporary files
-    readonly BACKUP_OUTPUT_TMP=$(mktemp)
-    readonly FORGET_OUTPUT_TMP=$(mktemp)
-    readonly PRUNE_OUTPUT_TMP=$(mktemp)
+    BACKUP_OUTPUT_TMP=$(mktemp)
+    FORGET_OUTPUT_TMP=$(mktemp)
+    PRUNE_OUTPUT_TMP=$(mktemp)
+
+    readonly BACKUP_OUTPUT_TMP
+    readonly FORGET_OUTPUT_TMP
+    readonly PRUNE_OUTPUT_TMP
 
     # Execute backup and capture output
     log "Rustic Backup:"
@@ -87,14 +92,12 @@ perform_backup() {
     rustic prune --max-repack=0 2>&1 | tee -a "$BACKUP_LOG" "$PRUNE_OUTPUT_TMP"
     local prune_code=${PIPESTATUS[0]}
 
-    local end_time=$(date +%s)
-    local duration=$((end_time - start_time))
-
-    local notification_body="Took $(($duration / 60)) minutes and $(($duration % 60)) seconds."
+    local duration=$(($(date +%s) - start_time))
+    local notification_body="Took $((duration / 60)) minutes and $((duration % 60)) seconds."
 
     if [[ "$backup_code" -eq 0 ]]; then
         local data_raw_uncolor
-        data_raw_uncolor=$(cat "$BACKUP_LOG" | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g')
+        data_raw_uncolor=$(sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g' "$BACKUP_LOG")
 
         send_ping "0" "$data_raw_uncolor"
         notify-send "Backup Successful" "$notification_body" --icon=gtk-ok --app-name="Rustic"
