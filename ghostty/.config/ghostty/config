@@ -1,7 +1,7 @@
 theme = catppuccin-macchiato
 window-theme = ghostty
 
-font-size    = 12
+font-size    = 13.5
 font-family  = FiraCode
 font-style   = Retina
 
@@ -13,7 +13,7 @@ font-feature = +cv05
 font-feature = +ss03
 font-feature = +ss05
 
-background-opacity = 0.85
+background-opacity = 0.9
 
 gtk-titlebar = false
 window-decoration = false
