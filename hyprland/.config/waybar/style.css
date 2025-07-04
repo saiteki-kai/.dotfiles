@@ -1,0 +1,202 @@
+* {
+    font-family: "Fira Code Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+    border-color: rgba(198, 160, 246, 0.93);
+}
+
+window#waybar {
+    background: transparent;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 4px 0px;
+    margin: 0px;
+}
+
+/* Windows Group */
+#workspaces {
+    background: rgba(30, 30, 46, 0.9);
+    border: 2px solid rgba(73, 77, 100, 0.93);
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+#workspaces:hover {
+    background: rgba(30, 30, 46, 0.9);
+}
+
+#workspaces button {
+    background: transparent;
+    color: #a6adc8;
+    padding: 8px 12px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    background: rgba(73, 77, 100, 0.93);
+    /* $mauveAlphaee */
+    color: #cad3f5;
+    /* $text */
+    font-weight: 500;
+}
+
+#workspaces button:hover {
+    background: #45475a;
+    color: #f5e0dc;
+}
+
+/* Music Group */
+#mpris {
+    background: rgba(30, 30, 46, 0.9);
+    border: 2px solid rgba(73, 77, 100, 0.93);
+    /* $surface1Alphaee */
+    padding: 8px 16px;
+    margin: 0px 8px;
+    color: #1db954;
+    /* Spotify green */
+    transition: all 0.3s ease;
+}
+
+#mpris:hover {
+    background: rgba(30, 30, 46, 0.9);
+    border-color: rgba(198, 160, 246, 0.93);
+    /* $mauveAlphaee */
+}
+
+/* Group containers */
+widget>box#system,
+widget>box#hardware,
+widget>box#clock {
+    background: rgba(30, 30, 46, 0.9);
+    border: 2px solid rgba(73, 77, 100, 0.93);
+    /* $surface1Alphaee */
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+/* Spacing between groups */
+widget>box#system {
+    margin-right: 4px;
+}
+
+widget>box#hardware {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+widget>box#clock {
+    margin-left: 4px;
+}
+
+/* Ensure modules inside containers inherit background properly */
+widget>box#system>*,
+widget>box#hardware>*,
+widget>box#clock>* {
+    background: transparent;
+}
+
+widget>box#system:hover,
+widget>box#hardware:hover,
+widget>box#clock:hover {
+    background: rgba(30, 30, 46, 0.9);
+    border-color: rgba(198, 160, 246, 0.93);
+}
+
+#backlight,
+#pulseaudio,
+#battery {
+    background: transparent;
+    padding: 8px 8px;
+    transition: all 0.15s ease;
+}
+
+/* Network and Bluetooth - Icon-only modules */
+#network,
+#bluetooth {
+    background: transparent;
+    padding: 8px 16px;
+    transition: all 0.15s ease;
+    color: #89b4fa;
+}
+
+#backlight {
+    color: #fab387;
+}
+
+#pulseaudio {
+    color: #cba6f7;
+}
+
+#battery {
+    color: #a6e3a1;
+}
+
+#language,
+#clock {
+    background: transparent;
+    transition: all 0.15s ease;
+    margin: 0;
+    padding: 8px 8px;
+}
+
+#language {
+    color: #94e2d5;
+}
+
+#clock {
+    color: #f5c2e7;
+}
+
+/* Add hover effects to individual modules */
+#network:hover,
+#bluetooth:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#battery:hover,
+#language:hover,
+#clock:hover {
+    background: rgba(69, 71, 90, 0.4);
+    color: #f5e0dc;
+}
+
+/* Remove individual module hover backgrounds to let container backgrounds show through */
+
+@keyframes charging-animation {
+    50% {
+        color: #a6e3a1;
+    }
+}
+
+#battery.charging {
+    animation: charging-animation 3s linear infinite;
+}
+
+@keyframes warning-animation {
+    50% {
+        color: #f9e2af;
+    }
+}
+
+#battery.warning:not(.charging) {
+    color: #f9e2af;
+    animation: warning-animation 1.5s linear infinite;
+}
+
+@keyframes critical-animation {
+    50% {
+        color: #f38ba8;
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: #f38ba8;
+    animation: critical-animation 0.5s linear infinite;
+}
