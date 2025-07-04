@@ -1,7 +1,7 @@
 {
 	"position": "top",
-	"height": 54,
-	"margin": "8 8 0 8",
+	"height": 48,
+	"margin": "4 11 0 11",
 	"modules-left": [
 		"hyprland/workspaces",
 		"mpris"
@@ -76,7 +76,9 @@
 		"format-wifi": "󰖩",
 		"format-ethernet": "󰈀",
 		"format-disconnected": "󰖪",
-		"tooltip-format": "󰤨  {essid}\n󰣺  {signalStrength}%\n󱘖  {ipaddr}",
+		"tooltip-format": "󰤨  {essid}\n󰣺  {signalStrength}%\n󱘖  {ipaddr}\n󰞒  {gwaddr}",
+		"tooltip-format-ethernet": "󰈀  Ethernet\n󱘖  {ipaddr}\n󰞒  {gwaddr}",
+		"tooltip-format-disconnected": "󰖪  Disconnected",
 		"on-click": "nm-connection-editor"
 	},
 	"bluetooth": {
@@ -103,7 +105,11 @@
 			"󰁹"
 		],
 		"format-charging": "󱐋 {capacity}%",
-		"tooltip-format": "󰁹  {capacity}%\n󰔟  {power}W\n󱧥  {time}"
+		"tooltip-format": "󰁹  {capacity}%\n󰔟  {power}W\n󱧥  {time}",
+		"states": {
+			"warning": 30,
+			"critical": 15
+		}
 	},
 	"backlight": {
 		"device": "intel_backlight",
@@ -149,9 +155,9 @@
 			"on-scroll": 1,
 			"on-click-right": "mode",
 			"format": {
-				"months": "<span color='#94e2d5'><b>{}</b></span>",
-				"weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-				"today": "<span color='#a6e3a1'><b>{}</b></span>"
+				"months": "<span color='#f5bde6'><b>{}</b></span>",
+				"weekdays": "<span color='#eed49f'><b>{}</b></span>",
+				"today": "<span color='#a6da95'><b>{}</b></span>"
 			}
 		},
 		"actions": {
