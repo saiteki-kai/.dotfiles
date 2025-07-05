@@ -184,7 +184,7 @@ widget>box#clock:hover {
     background: transparent;
     padding: 8px 12px;
     transition: all 0.2s ease;
-    font-weight: 500;
+    min-width: 50px;
 }
 
 /* Network and Bluetooth - Icon-only modules */

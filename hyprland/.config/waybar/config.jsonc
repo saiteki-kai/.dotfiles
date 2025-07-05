@@ -131,14 +131,16 @@
 	},
 	"pulseaudio": {
 		"format": "{icon} {volume}%",
-		"format-muted": "󰸈 {volume}%",
+		"format-muted": "{icon} {volume}%",
 		"format-icons": {
-			"headphone": "󰋋",
 			"default": [
 				"󰕿",
 				"󰖀",
 				"󰕾"
-			]
+            ],
+            "default-muted": "󰖁",
+			"headphone": "󰋋",
+            "headphone-muted": "󰟎"
 		},
 		"tooltip-format": "{icon} {volume}%\n{desc}",
 		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
