@@ -13,7 +13,8 @@ font-feature = +cv05
 font-feature = +ss03
 font-feature = +ss05
 
-background-opacity = 0.9
+background = 101010
+background-opacity = 0.85
 
 gtk-titlebar = false
 window-decoration = false
@@ -23,5 +24,7 @@ window-height = 60
 
 window-padding-x = 0, 0
 window-padding-y = 0, 0
+
+confirm-close-surface=false
 
 keybind = ctrl+shift+r=reload_config
