@@ -1,9 +1,8 @@
 @import "macchiato.css";
 
 * {
-    font-family: "Fira Code Nerd Font", sans-serif;
-    font-size: 13px;
-    font-weight: 400;
+    font-family: "Fira Code Nerd Font Mono", sans-serif;
+    font-size: 12pt;
     border: none;
     border-radius: 0;
     margin: 0;
@@ -184,7 +183,7 @@ widget>box#clock:hover {
     background: transparent;
     padding: 8px 12px;
     transition: all 0.2s ease;
-    min-width: 50px;
+    min-width: 60px;
 }
 
 /* Network and Bluetooth - Icon-only modules */
@@ -193,7 +192,7 @@ widget>box#clock:hover {
     background: transparent;
     padding: 8px 16px;
     transition: all 0.2s ease;
-    font-size: 14px;
+    font-size: 16pt;
     font-weight: 500;
 }
 
