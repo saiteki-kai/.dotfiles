@@ -1,0 +1,30 @@
+# See https://wiki.hyprland.org/Configuring/Environment-variables/
+
+# Cursors
+export XCURSOR_SIZE=24
+export HYPRCURSOR_SIZE=24
+export HYPRCURSOR_THEME=rose-pine-hyprcursor
+
+# Hyprland settings
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+
+# GUI toolkits 
+export GDK_BACKEND=wayland
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+
+# Nvidia settings
+export GBM_BACKEND=nvidia-drm
+export LIBVA_DRIVER_NAME=nvidia
+export SDL_VIDEODRIVER=wayland
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export __NV_PRIME_RENDER_OFFLOAD=1
+export __VK_LAYER_NV_optimus=NVIDIA_only
+
+# Set the SSH agent socket
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+
+# healthchecks.io status
+export HEALTHCHECKS_URL=https://healthchecks.io/b/3/e0d13002-de16-449c-b332-7d19ae1c14e7.json

@@ -1,9 +1,10 @@
 {
 	"position": "top",
-	"height": 56,
+	"height": "58",
 	"margin": "4 12 0 12",
 	"modules-left": [
 		"hyprland/workspaces",
+		"group/status",
 		"mpris"
 	],
 	"modules-center": [],
@@ -13,7 +14,7 @@
 		"group/clock"
 	],
 	"hyprland/workspaces": {
-		"format": "{icon}",
+		"format": "<span font_size='14pt'>{icon}</span>",
 		"persistent-workspaces": {
 			"*": [
 				1,
@@ -72,9 +73,23 @@
 			"clock"
 		]
 	},
+	"group/status": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/healthchecks",
+			"custom/notification"
+		]
+	},
 	"network": {
-		"format-wifi": "󰖩",
-		"format-ethernet": "󰈀",
+		"format-wifi": "{icon} {essid}",
+		"format-icons": [
+			"󰤯",
+			"󰤟",
+			"󰤢",
+			"󰤥",
+			"󰤨"
+		],
+		"format-ethernet": "󰈀 {ipaddr}/{cidr}",
 		"format-disconnected": "󰖪",
 		"tooltip-format": "󰤨  {essid}\n󰣺  {signalStrength}%\n󱘖  {ipaddr}\n󰞒  {gwaddr}",
 		"tooltip-format-ethernet": "󰈀  Ethernet\n󱘖  {ipaddr}\n󰞒  {gwaddr}",
@@ -83,10 +98,11 @@
 	},
 	"bluetooth": {
 		"format": "󰂲",
+		"format-connected": "󰂱 {device_alias}",
+		"format-connected-battery": "󰂱 {device_alias} (󰥉 {device_battery_percentage}%)",
 		"format-disabled": "󰂲",
-		"format-connected": "󰂱",
-		"tooltip-format": "󰂯  {controller_alias}\n󰂱  {num_connections} connected",
-		"tooltip-format-connected": "󰂱  {device_enumerate}",
+		"tooltip-format": "󰂯 {controller_alias}\n󰂱  {num_connections} connected",
+		"tooltip-format-connected": "󰂱 {device_enumerate}",
 		"tooltip-format-enumerate-connected": "{device_alias}",
 		"on-click": "blueman-manager"
 	},
@@ -137,10 +153,10 @@
 				"󰕿",
 				"󰖀",
 				"󰕾"
-            ],
-            "default-muted": "󰖁",
+			],
+			"default-muted": "󰖁",
 			"headphone": "󰋋",
-            "headphone-muted": "󰟎"
+			"headphone-muted": "󰟎"
 		},
 		"tooltip-format": "{icon} {volume}%\n{desc}",
 		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
@@ -168,15 +184,36 @@
 			"on-scroll-down": "shift_down"
 		}
 	},
-	"tray": {
-		"icon-size": 16,
-		"spacing": 10,
-		"show-passive-items": true,
-		"show-inactive": false
-	},
 	"hyprland/language": {
 		"format-en": "EN",
 		"format-it": "IT",
 		"format-jp": "JP"
+	},
+	"custom/healthchecks": {
+		"exec": ".local/scripts/healthchecks_status.sh",
+		"interval": 600,
+		"return-type": "json",
+		"format": " {text}",
+		"tooltip": true
+	},
+	"custom/notification": {
+		"tooltip": false,
+		"format": "{icon}",
+		"format-icons": {
+			"notification": "<span foreground='red'><sup></sup></span>",
+			"none": "",
+			"dnd-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-none": "",
+			"inhibited-notification": "<span foreground='red'><sup></sup></span>",
+			"inhibited-none": "",
+			"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-inhibited-none": ""
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
 	}
 }

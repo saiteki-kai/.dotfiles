@@ -1,11 +1,9 @@
 configuration {
-    font: "Noto Sans CJK JP Regular 14";
-    prompt: "Run: ";
+    font: "SF Pro Display Propo 13";
     show-icons: true;
     steal-focus: true;
-    terminal: "ghostty";
     sort: true;
-    sorting-method: "normal";
+    sorting-method: "fzf";
     case-sensitive: false;  
     drun-show-actions: true;
     drun-display-format: "{name}";
@@ -19,4 +17,4 @@ configuration {
     }
 }
 
-@theme "catppuccin-default"
+@theme "catppuccin-theme"

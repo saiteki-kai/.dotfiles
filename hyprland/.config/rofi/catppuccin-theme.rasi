@@ -1,30 +1,30 @@
-@import "catppuccin-macchiato"
+@import "macchiato.rasi"
 
 * {
-  selected-active-foreground:  @background;
+  selected-active-foreground:  @base;
   lightfg:                     @text;
-  separatorcolor:              @foreground;
+  separatorcolor:              @overlay1;
   urgent-foreground:           @red;
-  alternate-urgent-background: @lightbg;
+  alternate-urgent-background: @mantle;
   lightbg:                     @mantle;
   background-color:            transparent;
-  border-color:                @foreground;
-  normal-background:           @background;
+  border-color:                @overlay0;
+  normal-background:           @base;
   selected-urgent-background:  @red;
-  alternate-active-background: @lightbg;
+  alternate-active-background: @mantle;
   spacing:                     2;
-  alternate-normal-foreground: @foreground;
-  urgent-background:           @background;
-  selected-normal-foreground:  @lightbg;
+  alternate-normal-foreground: @text;
+  urgent-background:           @base;
+  selected-normal-foreground:  @text;
   active-foreground:           @blue;
   background:                  @base;
   selected-active-background:  @blue;
-  active-background:           @background;
-  selected-normal-background:  @lightfg;
-  alternate-normal-background: @lightbg;
+  active-background:           @base;
+  selected-normal-background:  @surface0;
+  alternate-normal-background: @mantle;
   foreground:                  @text;
-  selected-urgent-foreground:  @background;
-  normal-foreground:           @foreground;
+  selected-urgent-foreground:  @base;
+  normal-foreground:           @text;
   alternate-urgent-foreground: @red;
   alternate-active-foreground: @blue;
 
@@ -130,32 +130,32 @@ button selected {
 }
 num-filtered-rows {
     expand:     false;
-    text-color: Gray;
+    text-color: @overlay1;
 }
 num-rows {
     expand:     false;
-    text-color: Gray;
+    text-color: @overlay1;
 }
 textbox-num-sep {
     expand:     false;
-    str:        "/";
-    text-color: Gray;
+    str:        " / ";
+    text-color: @overlay1;
 }
 inputbar {
     padding:    1px ;
     spacing:    0px ;
     text-color: @normal-foreground;
-    children:   [ "prompt","textbox-prompt-colon","entry","num-filtered-rows","textbox-num-sep","num-rows","case-indicator" ];
+    children:   ["entry","num-filtered-rows","textbox-num-sep","num-rows" ];
 }
 case-indicator {
     spacing:    0;
     text-color: @normal-foreground;
 }
 entry {
-    text-color:        @normal-foreground;
+    text-color:        @text;
     cursor:            text;
     spacing:           0;
-    placeholder-color: Gray;
+    placeholder-color: @overlay1;
     placeholder:       "Type to filter";
 }
 prompt {

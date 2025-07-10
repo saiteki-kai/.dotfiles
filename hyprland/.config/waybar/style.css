@@ -1,26 +1,26 @@
 @import "macchiato.css";
 
+/* ===== BASE STYLES ===== */
 * {
-    font-family: "Fira Code Nerd Font Mono", sans-serif;
-    font-size: 12pt;
+    font-family: "SF Pro Display Propo, NotoSansM Nerd Font Propo, Ricty Nerd Font";
+    font-size: 10pt;
     border: none;
     border-radius: 0;
     margin: 0;
-    padding: 0;
-    min-height: 0;
 }
 
+/* ===== ANIMATIONS ===== */
 @keyframes urgent-pulse {
     0% {
         opacity: 1;
     }
 
-    50% {
-        opacity: 0.7;
-    }
-
     100% {
         opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
     }
 }
 
@@ -66,6 +66,7 @@
     }
 }
 
+/* ===== WINDOW & LAYOUT ===== */
 window#waybar {
     background: transparent;
 }
@@ -73,187 +74,212 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-    padding: 4px 0px;
+    padding: 6px 2px;
     margin: 0px;
 }
 
-/* Left modules styling */
 .modules-left {
-    margin-right: 6px;
+    margin-right: 8px;
 }
 
-/* Right modules styling */
 .modules-right {
-    margin-left: 6px;
+    margin-left: 8px;
 }
 
-/* Workspaces Group */
+/* ===== GROUP CONTAINERS ===== */
+widget>box#system,
+widget>box#hardware,
+widget>box#clock,
+widget>box#status {
+    background: @surface0AlphaCC;
+    border: 2px solid @overlay0Alpha88;
+    color: @text;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+widget>box#system {
+    margin-right: 8px;
+}
+
+widget>box#hardware {
+    margin: 0 8px;
+}
+
+widget>box#clock {
+    margin-left: 8px;
+}
+
+widget>box#status {
+    margin: 0px 6px;
+}
+
+widget>box#system:hover,
+widget>box#hardware:hover,
+widget>box#clock:hover,
+widget>box#status:hover {
+    border-color: @lavenderAlphaDD;
+    background: @surface1AlphaBB;
+}
+
+widget>box#system>*,
+widget>box#hardware>*,
+widget>box#clock>*,
+widget>box#status>* {
+    background: transparent;
+}
+
+/* ===== WORKSPACES ===== */
 #workspaces {
-    background: @base;
-    border: 2px solid @surface1;
+    background: @surface0AlphaCC;
+    border: 2px solid @overlay0Alpha88;
+    color: @text;
     padding: 0;
     margin-right: 8px;
     transition: all 0.3s ease;
 }
 
 #workspaces:hover {
-    border-color: @lavender;
+    border-color: @lavenderAlphaDD;
+    background: @surface1AlphaBB;
 }
 
 #workspaces button {
     background: transparent;
-    color: @subtext0;
-    padding: 10px 14px;
+    color: @text;
+    padding: 8px 12px;
     transition: all 0.2s ease;
     font-weight: 500;
+    min-width: 20px;
 }
 
 #workspaces button.active {
-    background: @mantle;
+    background: @lavender;
+    color: @crust;
 }
 
 #workspaces button:hover:not(.active) {
+    background: @overlay1;
     color: @text;
 }
 
 #workspaces button.urgent {
     background: @red;
-    color: @mantle;
+    color: @crust;
     animation: urgent-pulse 1.5s ease-in-out infinite;
 }
 
-/* Music Group */
+/* ===== MUSIC ===== */
 #mpris {
-    background: @base;
-    border: 2px solid @surface1;
+    background: @surface0AlphaCC;
+    border: 2px solid @mauve;
+    color: @text;
     padding: 8px 16px;
     margin: 0px 8px;
-    color: @green;
     transition: all 0.3s ease;
 }
 
 #mpris:hover {
-    border-color: @teal;
+    background: @surface1AlphaBB;
+    border-color: @blue;
 }
 
 #mpris.paused {
-    color: @overlay1;
-    border-color: @surface0;
+    color: @overlay2;
+    border-color: @surface1Alpha44;
 }
 
-/* Group containers */
-widget>box#system,
-widget>box#hardware,
-widget>box#clock {
-    background: @base;
-    border: 2px solid @surface1;
-    padding: 0;
-    transition: all 0.3s ease;
-}
-
-/* Improved spacing between groups */
-widget>box#system {
-    margin-right: 6px;
-}
-
-widget>box#hardware {
-    margin: 0 6px;
-}
-
-widget>box#clock {
-    margin-left: 6px;
-}
-
-/* Ensure modules inside containers inherit background properly */
-widget>box#system>*,
-widget>box#hardware>*,
-widget>box#clock>* {
-    background: transparent;
-}
-
-widget>box#system:hover,
-widget>box#hardware:hover,
-widget>box#clock:hover {
-    border-color: @lavender;
-}
-
+/* ===== HARDWARE MODULES ===== */
 #backlight,
 #pulseaudio,
 #battery {
     background: transparent;
-    padding: 8px 12px;
+    padding: 6px 10px;
+    min-width: 50px;
     transition: all 0.2s ease;
-    min-width: 60px;
 }
 
-/* Network and Bluetooth - Icon-only modules */
-#network,
-#bluetooth {
-    background: transparent;
-    padding: 8px 16px;
-    transition: all 0.2s ease;
-    font-size: 16pt;
-    font-weight: 500;
-}
-
-/* Color coding for better visual hierarchy */
 #backlight {
-    color: @yellow;
+    color: @peach;
 }
 
 #pulseaudio {
-    color: @sky;
+    color: @sapphire;
 }
 
 #battery {
-    color: @green;
+    color: @teal;
+}
+
+/* ===== NETWORK & CONNECTIVITY ===== */
+#network,
+#bluetooth {
+    background: transparent;
+    padding: 6px 12px;
+    transition: all 0.2s ease;
 }
 
 #network {
-    color: @text;
-}
-
-#bluetooth {
     color: @blue;
 }
 
+#bluetooth {
+    color: @lavender;
+}
+
+/* ===== SYSTEM INFO ===== */
 #language,
 #clock {
     background: transparent;
     transition: all 0.2s ease;
     margin: 0;
-    padding: 8px 12px;
+    padding: 6px 10px;
     font-weight: 500;
-}
-
-#language {
     color: @text;
 }
 
-#clock {
+/* ===== STATUS & CUSTOM MODULES ===== */
+#custom-healthchecks,
+#custom-notification {
+    background: transparent;
     color: @text;
+    padding: 6px 10px;
+    margin: 0;
+    transition: all 0.2s ease;
+    min-width: 40px;
 }
 
-/* Enhanced hover effects for individual modules */
+#custom-notification.none,
+#custom-notification.dnd-none,
+#custom-notification.inhibited-none,
+#custom-notification.dnd-inhibited-none {
+    color: @overlay1;
+}
+
+/* ===== HOVER EFFECTS ===== */
 #network:hover,
 #bluetooth:hover,
 #backlight:hover,
 #pulseaudio:hover,
 #battery:hover,
 #language:hover,
-#clock:hover {
-    background: @surface0;
+#clock:hover,
+#custom-healthchecks:hover,
+#custom-notification:hover {
+    background: @overlay0Alpha77;
     color: @text;
 }
 
-/* Battery state colors and animations */
+/* ===== STATE-BASED STYLES ===== */
+
+/* Battery States */
 #battery.charging {
-    color: @yellow;
+    color: @green;
     animation: charging-animation 2s ease-in-out infinite;
 }
 
 #battery.warning:not(.charging) {
-    color: @peach;
+    color: @yellow;
     animation: warning-animation 1.5s ease-in-out infinite;
 }
 
@@ -262,27 +288,69 @@ widget>box#clock:hover {
     animation: critical-animation 1s ease-in-out infinite;
 }
 
-
-
-/* Audio state colors */
+/* Audio States */
 #pulseaudio.muted {
-    color: @overlay0;
+    color: @overlay1;
 }
 
-/* Network state colors */
+/* Network States */
 #network.disconnected {
-    color: @overlay0;
+    color: @overlay1;
 }
 
 #network.ethernet {
     color: @green;
 }
 
-/* Bluetooth state colors */
+/* Bluetooth States */
 #bluetooth.disabled {
-    color: @overlay0;
+    color: @overlay1;
 }
 
 #bluetooth.connected {
     color: @blue;
+}
+
+/* Health Check States */
+#custom-healthchecks.up {
+    color: @green;
+}
+
+#custom-healthchecks.late {
+    color: @yellow;
+}
+
+#custom-healthchecks.down {
+    color: @red;
+}
+
+/* ===== CALENDAR TOOLTIP ===== */
+calendar {
+    background: @baseAlphaEE;
+    border: 2px solid @surface1AlphaAA;
+    border-radius: 0;
+    padding: 8px;
+}
+
+calendar .header {
+    color: @text;
+    font-weight: bold;
+}
+
+calendar .button {
+    background: transparent;
+    color: @subtext1;
+    border: none;
+    padding: 4px;
+}
+
+calendar .button:hover {
+    background: @overlay0Alpha88;
+    color: @text;
+}
+
+calendar .today {
+    color: @base;
+    font-weight: bold;
+    background: @lavender;
 }
