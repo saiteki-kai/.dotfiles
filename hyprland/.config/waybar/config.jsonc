@@ -1,26 +1,40 @@
 {
 	"position": "top",
-	"height": "58",
-	"margin": "4 12 0 12",
+	"height": 40,
+	"margin": "8 6 0 6",
 	"modules-left": [
-		"hyprland/workspaces",
-		"group/status",
 		"mpris"
 	],
-	"modules-center": [],
+	"modules-center": [
+		"custom/healthchecks",
+		"custom/notification",
+		"hyprland/workspaces",
+		"clock"
+	],
 	"modules-right": [
-		"group/system",
-		"group/hardware",
-		"group/clock"
+		"network",
+		"bluetooth",
+		"custom/separator",
+		"backlight",
+		"pulseaudio",
+		"battery",
+		"custom/separator",
+		"hyprland/language"
 	],
 	"hyprland/workspaces": {
-		"format": "<span font_size='14pt'>{icon}</span>",
+		"format": "{icon}",
 		"persistent-workspaces": {
 			"*": [
 				1,
 				2,
 				3,
-				4
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10
 			]
 		},
 		"format-icons": {
@@ -28,60 +42,34 @@
 			"2": "󰆍",
 			"3": "",
 			"4": "",
-			"default": "\udb81\udce9"
+			"5": "5",
+			"6": "6",
+			"7": "7",
+			"8": "8",
+			"9": "9",
+			"10": "10"
 		}
 	},
 	"mpris": {
-		"format": "{player_icon}   {artist} - {title}",
-		"format-paused": "{player_icon}   {artist} - {title}",
+		"format": "{player_icon} {dynamic}",
+		"format-paused": "{player_icon} {dynamic}",
 		"player-icons": {
 			"default": "󰐊",
 			"spotify": "󰓇"
 		},
+		"dynamic-order": [
+			"artist",
+			"title"
+		],
 		"player": "spotify",
-		"max-length": 40,
-		"tooltip-format": "{artist} - {album}",
+		// "max-length": 40,
+		"tooltip-format": "{album}",
 		"on-click": "playerctl -p spotify play-pause",
 		"on-scroll-up": "playerctl -p spotify next",
 		"on-scroll-down": "playerctl -p spotify previous"
 	},
-	"group/hardware": {
-		"orientation": "horizontal",
-		"modules": [
-			"backlight",
-			"pulseaudio",
-			"battery"
-		]
-	},
-	"group/system": {
-		"orientation": "horizontal",
-		"modules": [
-			"network",
-			"bluetooth"
-		]
-	},
-	"group/tray": {
-		"orientation": "horizontal",
-		"modules": [
-			"tray"
-		]
-	},
-	"group/clock": {
-		"orientation": "horizontal",
-		"modules": [
-			"hyprland/language",
-			"clock"
-		]
-	},
-	"group/status": {
-		"orientation": "horizontal",
-		"modules": [
-			"custom/healthchecks",
-			"custom/notification"
-		]
-	},
 	"network": {
-		"format-wifi": "{icon} {essid}",
+		"format-wifi": "{icon}",
 		"format-icons": [
 			"󰤯",
 			"󰤟",
@@ -89,16 +77,16 @@
 			"󰤥",
 			"󰤨"
 		],
-		"format-ethernet": "󰈀 {ipaddr}/{cidr}",
+		"format-ethernet": "󰈀",
 		"format-disconnected": "󰖪",
 		"tooltip-format": "󰤨  {essid}\n󰣺  {signalStrength}%\n󱘖  {ipaddr}\n󰞒  {gwaddr}",
-		"tooltip-format-ethernet": "󰈀  Ethernet\n󱘖  {ipaddr}\n󰞒  {gwaddr}",
+		"tooltip-format-ethernet": "󰈀  Ethernet\n󱘖  {ipaddr}/{cidr}\n󰞒  {gwaddr}",
 		"tooltip-format-disconnected": "󰖪  Disconnected",
 		"on-click": "nm-connection-editor"
 	},
 	"bluetooth": {
 		"format": "󰂲",
-		"format-connected": "󰂱 {device_alias}",
+		"format-connected": "󰂱",
 		"format-connected-battery": "󰂱 {device_alias} (󰥉 {device_battery_percentage}%)",
 		"format-disabled": "󰂲",
 		"tooltip-format": "󰂯 {controller_alias}\n󰂱  {num_connections} connected",
@@ -215,5 +203,9 @@
 		"on-click": "swaync-client -t -sw",
 		"on-click-right": "swaync-client -d -sw",
 		"escape": true
+	},
+	"custom/separator": {
+		"format": "|",
+		"tooltip": false
 	}
 }

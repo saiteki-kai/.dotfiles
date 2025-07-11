@@ -1,299 +1,194 @@
 @import "macchiato.css";
 
-/* ===== BASE STYLES ===== */
+/* ===== GLOBAL STYLES ===== */
 * {
     font-family: "SF Pro Display Propo, NotoSansM Nerd Font Propo, Ricty Nerd Font";
-    font-size: 10pt;
+    font-size: 11pt;
     border: none;
     border-radius: 0;
     margin: 0;
+    transition: none;
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes urgent-pulse {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.7;
-    }
-}
-
-@keyframes charging-animation {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.6;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes warning-animation {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.7;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes critical-animation {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-/* ===== WINDOW & LAYOUT ===== */
+/* ===== WAYBAR WINDOW ===== */
 window#waybar {
-    background: transparent;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
 }
 
+/* ===== MODULE CONTAINERS ===== */
 .modules-left,
 .modules-center,
 .modules-right {
-    padding: 6px 2px;
-    margin: 0px;
+    padding: 2px 4px;
+    margin: 0;
 }
 
-.modules-left {
-    margin-right: 8px;
-}
-
+.modules-left,
 .modules-right {
-    margin-left: 8px;
+    background: none;
+    border-radius: 999px;
 }
 
-/* ===== GROUP CONTAINERS ===== */
-widget>box#system,
-widget>box#hardware,
-widget>box#clock,
-widget>box#status {
-    background: @surface0AlphaCC;
-    border: 2px solid @overlay0Alpha88;
-    color: @text;
-    padding: 0;
-    transition: all 0.3s ease;
-}
-
-widget>box#system {
-    margin-right: 8px;
-}
-
-widget>box#hardware {
-    margin: 0 8px;
-}
-
-widget>box#clock {
-    margin-left: 8px;
-}
-
-widget>box#status {
-    margin: 0px 6px;
-}
-
-widget>box#system:hover,
-widget>box#hardware:hover,
-widget>box#clock:hover,
-widget>box#status:hover {
-    border-color: @lavenderAlphaDD;
-    background: @surface1AlphaBB;
-}
-
-widget>box#system>*,
-widget>box#hardware>*,
-widget>box#clock>*,
-widget>box#status>* {
-    background: transparent;
+.modules-center {
+    background: alpha(@surface0, 0.6);
+    border-radius: 999px;
+    padding: 2px 12px;
+    margin: 0;
 }
 
 /* ===== WORKSPACES ===== */
 #workspaces {
-    background: @surface0AlphaCC;
-    border: 2px solid @overlay0Alpha88;
-    color: @text;
-    padding: 0;
-    margin-right: 8px;
-    transition: all 0.3s ease;
-}
-
-#workspaces:hover {
-    border-color: @lavenderAlphaDD;
-    background: @surface1AlphaBB;
+    background: alpha(@base, 0.85);
+    padding: 2px 2px;
+    margin: 0 6px;
+    border-radius: 999px;
 }
 
 #workspaces button {
-    background: transparent;
+    background: alpha(@surface0, 0.85);
+    color: @crust;
+    border: none;
+    border-radius: 0;
+    min-width: 8px;
+}
+
+#workspaces button:first-child {
+    border-radius: 999px 0 0 999px;
+}
+
+#workspaces button:last-child {
+    border-radius: 0 999px 999px 0;
+}
+
+#workspaces button:nth-child(-n+4) {
+    background: alpha(@surface1, 0.93);
     color: @text;
-    padding: 8px 12px;
-    transition: all 0.2s ease;
-    font-weight: 500;
-    min-width: 20px;
+}
+
+#workspaces button:nth-child(n+5) {
+    background: alpha(@surface0, 0.35);
+    color: @overlay2;
 }
 
 #workspaces button.active {
-    background: @lavender;
+    background: alpha(@lavender, 1.0);
     color: @crust;
+    opacity: 1.0;
+}
+
+#workspaces button.active.empty {
+    background: alpha(@lavender, 0.7);
+    color: @text;
+    opacity: 0.7;
 }
 
 #workspaces button:hover:not(.active) {
-    background: @overlay1;
+    background: alpha(@overlay0, 0.5);
     color: @text;
+    opacity: 1.0;
 }
 
-#workspaces button.urgent {
-    background: @red;
-    color: @crust;
-    animation: urgent-pulse 1.5s ease-in-out infinite;
+#workspaces button.empty {
+    color: @overlay1;
+    background: alpha(@surface0, 0.15);
+    opacity: 0.5;
 }
 
-/* ===== MUSIC ===== */
+#workspaces button.empty:hover {
+    color: @text;
+    background: alpha(@overlay0, 0.25);
+    opacity: 0.8;
+}
+
+/* ===== MEDIA CONTROLS ===== */
 #mpris {
-    background: @surface0AlphaCC;
-    border: 2px solid @mauve;
-    color: @text;
-    padding: 8px 16px;
-    margin: 0px 8px;
-    transition: all 0.3s ease;
-}
-
-#mpris:hover {
-    background: @surface1AlphaBB;
-    border-color: @blue;
+    background: transparent;
+    color: @green;
+    padding: 2px 4px;
+    margin: 0 2px;
 }
 
 #mpris.paused {
     color: @overlay2;
-    border-color: @surface1Alpha44;
 }
 
-/* ===== HARDWARE MODULES ===== */
+/* ===== SYSTEM MODULES ===== */
 #backlight,
 #pulseaudio,
 #battery {
-    background: transparent;
-    padding: 6px 10px;
-    min-width: 50px;
-    transition: all 0.2s ease;
+    min-width: 65px;
 }
 
-#backlight {
-    color: @peach;
-}
-
-#pulseaudio {
-    color: @sapphire;
-}
-
-#battery {
-    color: @teal;
-}
-
-/* ===== NETWORK & CONNECTIVITY ===== */
+#backlight,
+#pulseaudio,
+#battery,
 #network,
-#bluetooth {
-    background: transparent;
-    padding: 6px 12px;
-    transition: all 0.2s ease;
-}
-
-#network {
-    color: @blue;
-}
-
-#bluetooth {
-    color: @lavender;
-}
-
-/* ===== SYSTEM INFO ===== */
+#bluetooth,
 #language,
+#clock,
+#custom-healthchecks {
+    background: transparent;
+    padding: 2px 4px;
+    color: @subtext0;
+    margin: 0;
+    border-radius: 0;
+}
+
 #clock {
+    color: @blue;
     background: transparent;
-    transition: all 0.2s ease;
-    margin: 0;
-    padding: 6px 10px;
+    padding: 2px 4px;
+    border-radius: 0;
     font-weight: 500;
-    color: @text;
 }
 
-/* ===== STATUS & CUSTOM MODULES ===== */
-#custom-healthchecks,
+/* ===== CUSTOM MODULES ===== */
 #custom-notification {
-    background: transparent;
+    min-width: 30px;
     color: @text;
-    padding: 6px 10px;
-    margin: 0;
-    transition: all 0.2s ease;
-    min-width: 40px;
 }
 
-#custom-notification.none,
-#custom-notification.dnd-none,
-#custom-notification.inhibited-none,
-#custom-notification.dnd-inhibited-none {
-    color: @overlay1;
+#custom-separator {
+    color: @surface0;
+    padding: 0 4px;
+    background: transparent;
+    font-weight: bold;
 }
 
-/* ===== HOVER EFFECTS ===== */
-#network:hover,
-#bluetooth:hover,
+/* ===== HOVER STATES ===== */
 #backlight:hover,
 #pulseaudio:hover,
 #battery:hover,
+#network:hover,
+#bluetooth:hover,
 #language:hover,
-#clock:hover,
+#mpris:hover,
 #custom-healthchecks:hover,
 #custom-notification:hover {
-    background: @overlay0Alpha77;
+    background: alpha(@overlay0, 0.25);
     color: @text;
 }
 
 /* ===== STATE-BASED STYLES ===== */
-
-/* Battery States */
 #battery.charging {
     color: @green;
-    animation: charging-animation 2s ease-in-out infinite;
 }
 
 #battery.warning:not(.charging) {
     color: @yellow;
-    animation: warning-animation 1.5s ease-in-out infinite;
 }
 
 #battery.critical:not(.charging) {
     color: @red;
-    animation: critical-animation 1s ease-in-out infinite;
 }
 
-/* Audio States */
 #pulseaudio.muted {
     color: @overlay1;
 }
 
-/* Network States */
 #network.disconnected {
     color: @overlay1;
 }
@@ -302,16 +197,10 @@ widget>box#status>* {
     color: @green;
 }
 
-/* Bluetooth States */
 #bluetooth.disabled {
     color: @overlay1;
 }
 
-#bluetooth.connected {
-    color: @blue;
-}
-
-/* Health Check States */
 #custom-healthchecks.up {
     color: @green;
 }
@@ -322,35 +211,4 @@ widget>box#status>* {
 
 #custom-healthchecks.down {
     color: @red;
-}
-
-/* ===== CALENDAR TOOLTIP ===== */
-calendar {
-    background: @baseAlphaEE;
-    border: 2px solid @surface1AlphaAA;
-    border-radius: 0;
-    padding: 8px;
-}
-
-calendar .header {
-    color: @text;
-    font-weight: bold;
-}
-
-calendar .button {
-    background: transparent;
-    color: @subtext1;
-    border: none;
-    padding: 4px;
-}
-
-calendar .button:hover {
-    background: @overlay0Alpha88;
-    color: @text;
-}
-
-calendar .today {
-    color: @base;
-    font-weight: bold;
-    background: @lavender;
 }

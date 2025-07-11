@@ -25,16 +25,3 @@
 @define-color base #24273a;
 @define-color mantle #1e2030;
 @define-color crust #181926;
-
-/* Add alpha variants for waybar */
-@define-color surface0AlphaCC rgba(54, 58, 79, 0.8);
-@define-color surface0AlphaDD rgba(54, 58, 79, 0.87);
-@define-color surface1Alpha66 rgba(73, 77, 100, 0.4);
-@define-color surface1Alpha44 rgba(73, 77, 100, 0.27);
-@define-color surface1AlphaBB rgba(73, 77, 100, 0.73);
-@define-color surface1AlphaAA rgba(73, 77, 100, 0.67);
-@define-color lavenderAlphaDD rgba(183, 189, 248, 0.87);
-@define-color overlay0Alpha99 rgba(110, 115, 141, 0.6);
-@define-color overlay0Alpha77 rgba(110, 115, 141, 0.47);
-@define-color overlay0Alpha88 rgba(110, 115, 141, 0.53);
-@define-color baseAlphaEE rgba(36, 39, 58, 0.93);
