@@ -1,21 +1,21 @@
----@module "lazy"
 ---@type LazySpec
 return {
     "stevearc/conform.nvim",
 
+    enabled = true,
+
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
 
-    ---@module "conform"
-    ---@type conform.setupOpts
     opts = {
         notify_on_error = false,
         lsp_fallback = true,
 
         formatters_by_ft = {
-            lua = { "stylua" },
+            -- lua = { "stylua" },
             python = { "ruff" },
             sh = { "shfmt" },
+            css = { "prettier" },
         },
 
         format_on_save = {

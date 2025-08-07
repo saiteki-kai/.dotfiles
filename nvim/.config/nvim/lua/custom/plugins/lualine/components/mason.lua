@@ -1,5 +1,10 @@
 local async = require("plenary.async")
-local mason_registry = require("mason-registry")
+
+local mason_registry = nil
+local mason_ok, registry = pcall(require, "mason-registry")
+if mason_ok then
+    mason_registry = registry
+end
 
 local M = {}
 
@@ -14,6 +19,10 @@ end
 
 -- Get the number of packages with available updates
 M.get_update_count = function()
+    if not mason_registry then
+        return "?"
+    end
+
     local updates = 0
     local installed_packages = mason_registry.get_installed_packages()
 

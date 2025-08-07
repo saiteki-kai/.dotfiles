@@ -4,15 +4,11 @@ return {
     {
         "saghen/blink.cmp",
 
-        -- version = "*",
         build = "cargo build --release",
 
         event = { "InsertEnter" },
 
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-            -- "giuxtaposition/blink-cmp-copilot",
-        },
+        dependencies = { "rafamadriz/friendly-snippets", "fang2hou/blink-copilot" },
 
         ---@module "blink.cmp"
         ---@type blink.cmp.Config
@@ -23,76 +19,99 @@ return {
                 ["<Up>"] = { "select_prev", "fallback" },
                 ["<Down>"] = { "select_next", "fallback" },
 
-                ["<Enter>"] = { "select_and_accept", "fallback" },
+                ["<Enter>"] = { "select_and_accept", "fallback" }
             },
 
             appearance = {
                 use_nvim_cmp_as_default = true,
-                nerd_font_variant = "mono",
+                nerd_font_variant = "mono"
             },
 
             completion = {
-                list = { selection = { auto_insert = true, preselect = true } },
                 menu = {
-                    border = "rounded",
+                    auto_show = true,
                     draw = {
+                        treesitter = { "lsp" },
                         gap = 1,
                         padding = 1,
-                        columns = { { "label", "label_description", gap = 1 }, { "kind_icon", gap = 1, "kind" } },
+                        columns = {
+                            {
+                                "label",
+                                "label_description",
+                                gap = 1
+                            },
+                            {
+                                "kind_icon",
+                                "kind",
+                                gap = 1
+                            }
+                        },
                     },
-                    winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
                 },
 
                 documentation = {
-                    window = {
-                        border = "rounded",
-                        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
-                    },
                     auto_show = true,
-                    auto_show_delay_ms = 200,
-                    update_delay_ms = 50,
-                },
+                    auto_show_delay_ms = 500,
+                }
             },
             signature = {
-                window = {
-                    border = "rounded",
-                    winhighlight = "Normal:None,FloatBorder:FloatBorder",
-                },
+                enabled = true,
             },
 
-            cmdline = { enabled = false },
+            cmdline = {
+                enabled = false
+            },
 
             sources = {
-                default = { "lazydev", "lsp", "path", "snippets", "buffer" }, -- , "copilot" },
+                default = { --[[ "lazydev", ]] "lsp", "path", "snippets", "buffer", "copilot" },
                 providers = {
-                    lazydev = {
-                        name = "LazyDev",
-                        module = "lazydev.integrations.blink",
-                        score_offset = 100,
-                    },
-                    -- copilot = {
-                    --     name = "copilot",
-                    --     module = "blink-cmp-copilot",
-                    --     score_offset = 100,
-                    --     async = true,
+                    -- lazydev = {
+                    --     name = "LazyDev",
+                    --     module = "lazydev.integrations.blink",
+                    --     score_offset = 100
                     -- },
-                },
+                    copilot = {
+                        name = "copilot",
+                        module = "blink-copilot",
+                        score_offset = 100,
+                        async = true
+                    }
+                }
             },
+
+            fuzzy = {
+                implementation = "prefer_rust_with_warning"
+            }
         },
 
-        opts_extend = { "sources.default" },
-    },
-    -- {
-    --     "zbirenbaum/copilot.lua",
-    --
-    --     lazy = true,
-    --
-    --     cmd = "Copilot",
-    --     event = "InsertEnter",
-    --
-    --     opts = {
-    --         -- suggestion = { enabled = false },
-    --         -- panel = { enabled = false },
-    --     }
-    -- }
+        opts_extend = { "sources.default" }
+    }, {
+    "github/copilot.vim",
+
+    cmd = "Copilot",
+
+    event = "BufWinEnter",
+
+    init = function()
+        vim.g.copilot_no_maps = true
+    end,
+
+    config = function()
+        -- Block the normal Copilot suggestions
+        vim.api.nvim_create_augroup("github_copilot", {
+            clear = true
+        })
+
+        vim.api.nvim_create_autocmd({ "FileType", "BufUnload" }, {
+            group = "github_copilot",
+            callback = function(args)
+                vim.fn["copilot#On" .. args.event]()
+            end
+        })
+
+        vim.fn["copilot#OnFileType"]()
+    end
+
+}
+
 }

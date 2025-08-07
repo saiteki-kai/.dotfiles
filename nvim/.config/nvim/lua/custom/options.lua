@@ -31,7 +31,12 @@ opt.winblend = 0
 opt.pumblend = 0
 opt.pumheight = 10
 opt.list = true
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.listchars = {
+    tab = "» ",
+    trail = "·",
+    nbsp = "␣"
+}
+opt.winborder = "single"
 
 -- Search
 opt.hlsearch = false
@@ -68,3 +73,5 @@ end)
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+
+vim.cmd([[colorscheme vscode ]])
