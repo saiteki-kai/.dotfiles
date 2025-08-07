@@ -1,214 +1,153 @@
-@import "macchiato.css";
+@import "themes/macchiato.css";
 
-/* ===== GLOBAL STYLES ===== */
 * {
-    font-family: "SF Pro Display Propo, NotoSansM Nerd Font Propo, Ricty Nerd Font";
-    font-size: 11pt;
-    border: none;
-    border-radius: 0;
-    margin: 0;
-    transition: none;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "NotoSansM NFP", "Noto Sans CJK JP", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
 
-/* ===== WAYBAR WINDOW ===== */
 window#waybar {
-    background: none;
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
+  background: #010101;
+  color: @text;
 }
 
-/* ===== MODULE CONTAINERS ===== */
-.modules-left,
-.modules-center,
+.modules-left {
+  margin-left: 0px;
+  /* margin-left: 12px; */
+}
+
 .modules-right {
-    padding: 2px 4px;
-    margin: 0;
-}
-
-.modules-left,
-.modules-right {
-    background: none;
-    border-radius: 999px;
-}
-
-.modules-center {
-    background: alpha(@surface0, 0.6);
-    border-radius: 999px;
-    padding: 2px 12px;
-    margin: 0;
-}
-
-/* ===== WORKSPACES ===== */
-#workspaces {
-    background: alpha(@base, 0.85);
-    padding: 2px 2px;
-    margin: 0 6px;
-    border-radius: 999px;
+  margin-right: 0px;
+  /* margin-right: 12px; */
 }
 
 #workspaces button {
-    background: alpha(@surface0, 0.85);
-    color: @crust;
-    border: none;
-    border-radius: 0;
-    min-width: 8px;
-}
-
-#workspaces button:first-child {
-    border-radius: 999px 0 0 999px;
-}
-
-#workspaces button:last-child {
-    border-radius: 0 999px 999px 0;
-}
-
-#workspaces button:nth-child(-n+4) {
-    background: alpha(@surface1, 0.93);
-    color: @text;
-}
-
-#workspaces button:nth-child(n+5) {
-    background: alpha(@surface0, 0.35);
-    color: @overlay2;
-}
-
-#workspaces button.active {
-    background: alpha(@lavender, 1.0);
-    color: @crust;
-    opacity: 1.0;
-}
-
-#workspaces button.active.empty {
-    background: alpha(@lavender, 0.7);
-    color: @text;
-    opacity: 0.7;
-}
-
-#workspaces button:hover:not(.active) {
-    background: alpha(@overlay0, 0.5);
-    color: @text;
-    opacity: 1.0;
+  all: initial;
+  padding: 0 4px;
+  margin: 0 2px;
+  min-width: 20px;
+  background: transparent;
+  color: @text;
 }
 
 #workspaces button.empty {
-    color: @overlay1;
-    background: alpha(@surface0, 0.15);
-    opacity: 0.5;
+  opacity: 0.6;
+  color: @overlay1;
 }
 
-#workspaces button.empty:hover {
-    color: @text;
-    background: alpha(@overlay0, 0.25);
-    opacity: 0.8;
+#workspaces button.active {
+  background: @lavender;
+  color: @base;
 }
 
-/* ===== MEDIA CONTROLS ===== */
+#workspaces button:hover {
+  background: @surface1;
+  color: @text;
+}
+
+/* Media player */
 #mpris {
-    background: transparent;
-    color: @green;
-    padding: 2px 4px;
-    margin: 0 2px;
+  background: transparent;
+  color: @green;
+  padding: 0 4px;
+  margin-right: 8px;
+  font-size: 12px;
 }
 
 #mpris.paused {
-    color: @overlay2;
+  color: @overlay2;
 }
 
-/* ===== SYSTEM MODULES ===== */
+/* Notification area */
+#custom-notification,
+#custom-healthchecks {
+  padding: 0 4px;
+  margin: 0 2px;
+  color: @text;
+}
+
+/* Clock */
+#clock {
+  margin: 0 4px;
+  padding: 0 4px;
+  color: @lavender;
+}
+
+/* Connectivity modules */
+#network,
+#bluetooth {
+  padding: 2px 6px;
+  margin: 0 1px;
+  min-width: 24px;
+  color: @text;
+}
+
+/* System modules */
 #backlight,
 #pulseaudio,
 #battery {
-    min-width: 65px;
+  padding: 2px 6px;
+  margin: 0 1px;
+  min-width: 55px;
+  color: @text;
 }
 
-#backlight,
-#pulseaudio,
-#battery,
-#network,
-#bluetooth,
-#language,
-#clock,
-#custom-healthchecks {
-    background: transparent;
-    padding: 2px 4px;
-    color: @subtext0;
-    margin: 0;
-    border-radius: 0;
+/* Language switcher */
+#language {
+  padding: 2px 6px;
+  margin: 0 2px;
+  color: @text;
 }
 
-#clock {
-    color: @blue;
-    background: transparent;
-    padding: 2px 4px;
-    border-radius: 0;
-    font-weight: 500;
+#network:hover {
+  background: @surface1;
+  color: @blue;
 }
 
-/* ===== CUSTOM MODULES ===== */
-#custom-notification {
-    min-width: 30px;
-    color: @text;
+#bluetooth:hover {
+  background: @surface1;
+  color: @sapphire;
 }
 
-#custom-separator {
-    color: @surface0;
-    padding: 0 4px;
-    background: transparent;
-    font-weight: bold;
+#backlight:hover {
+  background: @surface1;
+  color: @yellow;
 }
 
-/* ===== HOVER STATES ===== */
-#backlight:hover,
-#pulseaudio:hover,
-#battery:hover,
-#network:hover,
-#bluetooth:hover,
-#language:hover,
-#mpris:hover,
-#custom-healthchecks:hover,
-#custom-notification:hover {
-    background: alpha(@overlay0, 0.25);
-    color: @text;
+#pulseaudio:hover {
+  background: @surface1;
+  color: @peach;
 }
 
-/* ===== STATE-BASED STYLES ===== */
-#battery.charging {
-    color: @green;
+#battery:hover {
+  background: @surface1;
+  color: @green;
 }
 
-#battery.warning:not(.charging) {
-    color: @yellow;
+#language:hover {
+  background: @surface1;
+  color: @mauve;
 }
 
-#battery.critical:not(.charging) {
-    color: @red;
+#battery.warning {
+  color: @yellow;
 }
 
-#pulseaudio.muted {
-    color: @overlay1;
+#battery.critical {
+  color: @red;
 }
 
-#network.disconnected {
-    color: @overlay1;
-}
-
-#network.ethernet {
-    color: @green;
-}
-
+#network.disconnected,
 #bluetooth.disabled {
-    color: @overlay1;
+  color: @overlay0;
 }
 
-#custom-healthchecks.up {
-    color: @green;
-}
-
-#custom-healthchecks.late {
-    color: @yellow;
-}
-
-#custom-healthchecks.down {
-    color: @red;
+tooltip {
+  background: #010101;
+  color: @text;
+  padding: 4px 8px;
+  font-size: 12px;
 }
