@@ -16,9 +16,11 @@ export CLUTTER_BACKEND=wayland
 export QT_QPA_PLATFORM=wayland;xcb
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export ELECTRON_OZONE_PLATFORM_HINT=auto
 
 # Nvidia settings
 export GBM_BACKEND=nvidia-drm
+export NVD_BACKEND=direct
 export LIBVA_DRIVER_NAME=nvidia
 export SDL_VIDEODRIVER=wayland
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
