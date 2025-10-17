@@ -5,31 +5,31 @@ local wezterm = require("wezterm")
 local config = {}
 
 if wezterm.config_builder then
-    config = wezterm.config_builder()
+	config = wezterm.config_builder()
 end
 
 -- Fonts
 
 config.font = wezterm.font_with_fallback({
-    {
-        family = "FiraCode-Retina",
-        harfbuzz_features = { 'calt=0', "clig=0", "liga=0", "zero", "cv05", "ss03", "ss05" },
-    },
-    {
-        family = "Noto Color Emoji",
-    },
-    {
-        family = "Symbols Nerd Font Mono",
-    },
-    {
-        -- https://github.com/edihbrandon/RictyDiminished
-        family = "Ricty Diminished",
-        scale = 1.2,
-    },
-    {
-        -- https://github.com/adobe-fonts/source-han-code-jp
-        family = "Source Han Code JP",
-    }
+	{
+		family = "FiraCode",
+		harfbuzz_features = { "calt=0", "clig=0", "liga=0", "zero", "cv05", "ss03", "ss05" },
+	},
+	{
+		family = "Noto Color Emoji",
+	},
+	{
+		family = "Symbols Nerd Font Mono",
+	},
+	{
+		-- https://github.com/edihbrandon/RictyDiminished
+		family = "Ricty Diminished",
+		scale = 1.2,
+	},
+	{
+		-- https://github.com/adobe-fonts/source-han-code-jp
+		family = "Source Han Code JP",
+	},
 })
 config.font_size = 12 -- 12.7
 
@@ -53,18 +53,18 @@ config.adjust_window_size_when_changing_font_size = false
 
 -- Colors
 
-config.color_scheme = 'Catppuccin Macchiato'
+config.color_scheme = "Catppuccin Macchiato"
 config.colors = {
-    -- background = "black",
-    -- cursor_bg = "white",
-    -- cursor_border = "white",
+	-- background = "black",
+	-- cursor_bg = "white",
+	-- cursor_border = "white",
 }
 
 -- Cursor animation
 
 config.default_cursor_style = "BlinkingBlock"
-config.cursor_blink_ease_in = 'Constant'
-config.cursor_blink_ease_out = 'Constant'
+config.cursor_blink_ease_in = "Constant"
+config.cursor_blink_ease_out = "Constant"
 config.hide_mouse_cursor_when_typing = true
 
 -- Performance
