@@ -1,7 +1,6 @@
 * {
     font-family: JetBrainsMonoNL NFP, FiraCode Nerd Font, monospace;
     font-size: 10pt;
-    min-height: 0;
 }
 
 window#waybar {
@@ -9,26 +8,42 @@ window#waybar {
     color: #ffffff;
 }
 
-#workspaces button {
-    padding: 0px;
-    margin: 6px 2px;
-    background-color: transparent;
-    color: #ffffff;
-    border: #fff solid 1px;
-    border-radius: 0;
+#workspaces {
+    margin-left: 4px;
+    margin-right: 8px;
+    padding: 4px 0px;
 }
 
-#workspaces button:hover {
-    background-color: #404040;
+#workspaces button {
+    padding: 0px 4px;
+    margin: 0px 0px;
+    color: #b4befe;
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
 }
 
 #workspaces button.focused {
-    background-color: #5f676a;
+    color: #fff;
 }
 
-#workspaces button.urgent {
-    background-color: #eb4d4b;
+#workspaces button.urgent:not(.focused) {
+    color: #ff4d4f;
 }
+
+#workspaces button.empty:not(.focused) {
+    color: #333;
+}
+
+/* Show a bottom border on the current output's workspace button */
+/* #workspaces button.current_output {
+    margin-top: 1px;
+    border-bottom: 1px solid #ffffff;
+} */
+
+/* #workspaces button.visible:not(.empty) {
+    color: #00e1ff;
+} */
 
 #mpris,
 #custom-notification,

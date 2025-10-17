@@ -22,12 +22,43 @@
     ],
     "sway/workspaces": {
         "disable-scroll": true,
+        "disable-click": true,
         "all-outputs": true,
-        "format": "{name}",
+        "format": "<span size=\"11.5pt\">{icon}</span>", // <span size='xx-small' rise='0pt'> {index}</span>",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
         "format-icons": {
-            "urgent": "!",
-            "focused": "*",
-            "default": ""
+            "default": "",
+            "focused": "",
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            //"6": " ",
+            //"7": " ",
+            //"8": " ",
+            "9": "",
+            "10": "",
+            "high-priority-named": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "9",
+                "10"
+            ]
         }
     },
     "sway/window": {
@@ -37,12 +68,12 @@
         "tooltip": false
     },
     "sway/mode": {
-        "format": "{}",
+        "format": "<i>{}</i>",
         "max-length": 50
     },
     "mpris": {
-        "format": "󰓇 {dynamic}",
-        "format-paused": " {dynamic}",
+        "format": " {dynamic}",
+        "format-paused": " {dynamic}",
         "dynamic-order": [
             "artist",
             "title"
@@ -78,7 +109,7 @@
         "exec": "$HOME/.local/scripts/healthchecks_status.sh",
         "interval": 600,
         "return-type": "json",
-        "format": "<span size=\"large\">{icon}</span> {text}",
+        "format": "<span size=\"large\">{icon}</span>",
         "format-icons": {
             "up": "󰅠",
             "late": "󰨹",
@@ -110,8 +141,8 @@
     "group/connectivity": {
         "orientation": "horizontal",
         "modules": [
-            "bluetooth",
-            "network"
+            "network",
+            "bluetooth"
         ]
     },
     "group/system": {
