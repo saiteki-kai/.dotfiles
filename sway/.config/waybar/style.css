@@ -23,6 +23,14 @@ window#waybar {
     border-radius: 0px;
 }
 
+/* Disable the default hover effect on workspace buttons */
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #000000;
+    border: #000000;
+}
+
 #workspaces button.focused {
     color: #fff;
 }
