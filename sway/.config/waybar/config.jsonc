@@ -119,7 +119,7 @@
         "tooltip": true
     },
     "clock": {
-        "format": "{:%a %b %d %I:%M %p}",
+        "format": "{:%a %b %d %H:%M}", // or %I:%M %p for 12-hour format
         "tooltip-format": "{calendar}",
         "calendar": {
             "mode": "month",
