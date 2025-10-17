@@ -7,7 +7,7 @@ toggle_terminal_blur_widget () {
 }
 
 tmux_session_widget () {
-    tmux-session 
+    tmux-sessionizer 
 }
 
 # Load and register widgets

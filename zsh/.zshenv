@@ -7,13 +7,15 @@
 export LANG=en_US.UTF-8
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="ghostty"
+export TERMINAL="foot"
 export COLORTERM="truecolor"
 
 # XDG base directories
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
+
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 
 # Oh My Zsh installation path
 export ZSH="$HOME/.oh-my-zsh"
@@ -25,6 +27,7 @@ path=(
     $HOME/bin
     $HOME/.local/bin
     $HOME/.local/scripts
+    $HOME/Applications/flutter/bin
 )
 
 # Remove duplicate entries
