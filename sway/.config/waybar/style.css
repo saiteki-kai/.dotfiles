@@ -96,3 +96,12 @@ window#waybar {
 #custom-healthchecks.down {
     color: #eb4d4b;
 }
+
+/* Tooltip styles */
+tooltip {
+  background: #000000;
+  border-radius: 0px;
+}
+tooltip label {
+  color: white;
+}
