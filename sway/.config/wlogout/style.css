@@ -1,0 +1,55 @@
+* {
+	background-image: none;
+	box-shadow: none;
+	text-shadow: none;
+	font-size: 16px;
+	font-family: JetBrainsMono Nerd Font, FiraCode Nerd Font, monospace;
+}
+
+window {
+	background-color: rgba(0, 0, 0, 0.95);
+}
+
+button {
+    border-radius: 0;
+    border-color: #1e1e2e;
+	text-decoration-color: #cdd6f4;
+    color: #cdd6f4;
+	background-color: #1e1e2e;
+	border-style: solid;
+	border-width: 2px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 35%;
+}
+
+button:focus, button:active, button:hover {
+	background-color: #313244;
+	border-color: #b4befe;
+	color: #ffffff;
+	outline-style: none;
+}
+
+#lock {
+    background-image: url("./icons/lock.svg");
+}
+
+#logout {
+    background-image: url("./icons/logout.svg");
+}
+
+#suspend {
+	background-image: url("./icons/suspend.svg");
+}
+
+#hibernate {
+    background-image: url("./icons/hibernate.svg");
+}
+
+#shutdown {
+    background-image: url("./icons/shutdown.svg");
+}
+
+#reboot {
+    background-image: url("./icons/reboot.svg");
+}

@@ -12,6 +12,7 @@ set $right l
 
 set $term foot
 set $menu walker # wmenu-run
+set $logout wlogout -L 550 -R 550 -T 300 -B 300 -c 10 -r 10 -s
 
 font pango:JetBrainsMono Nerd Font 10
 
@@ -84,7 +85,7 @@ input type:keyboard {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec wlogout 
+    bindsym $mod+Shift+e exec $logout
 #   
 # Moving around:
 #
