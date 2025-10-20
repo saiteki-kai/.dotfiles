@@ -12,7 +12,9 @@ set $right l
 
 set $term foot
 set $menu walker # wmenu-run
-set $logout wlogout -L 550 -R 550 -T 300 -B 300 -c 10 -r 10 -s
+set $logout wlogout -b 5 -T 425 -B 455 -L 300 -R 300 -c 20 -s -p layer-shell
+
+set $wallpaper ~/Pictures/wallpapers/wallhaven-5785m3_1920x1080.png 
 
 font pango:JetBrainsMono Nerd Font 10
 
@@ -22,15 +24,19 @@ font pango:JetBrainsMono Nerd Font 10
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 output eDP-1 {
-    bg ~/Pictures/wallpapers/wallhaven-5785m3_1920x1080.png fill
+    bg $wallpaper fill
     mode 1920x1080@144Hz
     pos 0 0
 }
 
 output * {
-    bg ~/Pictures/wallpapers/wallhaven-5785m3_1920x1080.png fill
+    bg $wallpaper fill
     pos 0 -1080
 }
+
+# Blurred wallpaper for lock screen and logout menu
+
+exec_always magick $wallpaper -blur 0x8 /tmp/wallpaper_blurred.png
 
 ### Idle configuration
 

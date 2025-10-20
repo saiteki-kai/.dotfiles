@@ -2,32 +2,28 @@
 	background-image: none;
 	box-shadow: none;
 	text-shadow: none;
-	font-size: 16px;
+	font-size: 20px;
 	font-family: JetBrainsMono Nerd Font, FiraCode Nerd Font, monospace;
 }
 
 window {
-	background-color: rgba(0, 0, 0, 0.95);
+    background-image: url("/tmp/wallpaper_blurred.png");
 }
 
 button {
-    border-radius: 0;
-    border-color: #1e1e2e;
-	text-decoration-color: #cdd6f4;
-    color: #cdd6f4;
-	background-color: #1e1e2e;
-	border-style: solid;
-	border-width: 2px;
+    color: #1e1e2e;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 35%;
+	background-size: 25%;
+	border: none;
+	border-radius: 16px;
+	background-color: transparent;
 }
 
 button:focus, button:active, button:hover {
-	background-color: #313244;
-	border-color: #b4befe;
-	color: #ffffff;
-	outline-style: none;
+	background-color: rgba(255, 255, 255, 0.35);
+	border: none;
+	border-radius: 16px;
 }
 
 #lock {
@@ -39,15 +35,11 @@ button:focus, button:active, button:hover {
 }
 
 #suspend {
-	background-image: url("./icons/suspend.svg");
-}
-
-#hibernate {
-    background-image: url("./icons/hibernate.svg");
+	background-image: url("./icons/sleep.svg");
 }
 
 #shutdown {
-    background-image: url("./icons/shutdown.svg");
+    background-image: url("./icons/power.svg");
 }
 
 #reboot {
