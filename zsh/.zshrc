@@ -35,3 +35,11 @@ export PROJECTS_DIR=${HOME}/Documents/03_Projects
 export DOT_DIR=${PROJECTS_DIR}/01_Active/dotfiles
 
 eval "$(zoxide init zsh --cmd cd)"
+
+# pnpm
+export PNPM_HOME="/home/giuseppe/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

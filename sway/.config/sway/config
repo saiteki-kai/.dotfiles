@@ -11,8 +11,9 @@ set $up k
 set $right l
 
 set $term foot
-set $menu walker # wmenu-run
+set $menu rofi -show drun
 set $logout wlogout -b 5 -T 425 -B 455 -L 300 -R 300 -c 20 -s -p layer-shell
+set $lockscreen hyprlock # swaylock -f -c 000000
 
 set $wallpaper ~/Pictures/wallpapers/wallhaven-5785m3_1920x1080.png 
 
@@ -29,9 +30,16 @@ output eDP-1 {
     pos 0 0
 }
 
-output * {
+# output HDMI-A-2 {
+#     bg $wallpaper fill
+#     # mode 1920x1080@144Hz
+#     pos 0 -1080
+# }
+
+output HDMI-A-2 {
     bg $wallpaper fill
-    pos 0 -1080
+    mode 2560x1440@70Hz
+    pos 0 -1440
 }
 
 # Blurred wallpaper for lock screen and logout menu
@@ -48,10 +56,9 @@ exec_always magick $wallpaper -blur 0x8 /tmp/wallpaper_blurred.png
 # bindswitch --locked lid:toggle exec swaylock --daemonize && systemctl sleep
 
 exec swayidle -w \
-     timeout 300 'swaylock -f -c 000000' \
-     timeout 360 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-     timeout 900 'systemctl suspend' \
-     before-sleep 'playerctl pause; swaylock -f -c 000000'
+     timeout 300 '$lockscreen' \
+     timeout 360 'swaymsg "output * power off"'\
+     resume      'swaymsg "output * power on"'
 
 ### Input configuration
 
@@ -203,9 +210,9 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    bindsym Print exec  slurp | grim -g - - | wl-copy
 
-    bindsym $mod+Escape exec swaylock -f -c 000000
+    bindsym $mod+Escape exec '$lockscreen'
 
 ### Status Bar
 
@@ -215,7 +222,7 @@ bar {
 
 ### Settings
 
-mouse_warping container
+# mouse_warping container
 
 ### Style
 
@@ -236,6 +243,7 @@ client.background        $base
 assign [app_id="Zotero"] workspace 5
 assign [class="obsidian"] workspace 4
 assign [class="Spotify"] workspace 10
+assign [app_id="spotify"] workspace 10
 
 ### Window rules
 
