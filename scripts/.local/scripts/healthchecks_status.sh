@@ -9,7 +9,8 @@ else
     exit 1
 fi
 
-if response=$(curl -s -m 2 "$URL" 2>/dev/null) && [ -n "$response" ]; then
+# Send request to healthchecks.io
+if response=$(curl -s -m 2 --retry-delay 10 --retry 5 "$URL" 2>/dev/null) && [ -n "$response" ]; then
     status=$(echo "$response" | jq -r '.status')
     if [ "$status" = "up" ]; then
         echo '{"text": "Up", "alt": "up", "class": "up", "tooltip": "Backup: Operational"}'
