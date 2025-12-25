@@ -10,7 +10,7 @@ set $down j
 set $up k
 set $right l
 
-set $term foot
+set $term footclient
 set $menu rofi -show drun
 set $logout wlogout -b 5 -T 425 -B 455 -L 300 -R 300 -c 20 -s -p layer-shell
 set $lockscreen hyprlock # swaylock -f -c 000000
@@ -217,7 +217,7 @@ bindsym $mod+r mode "resize"
 ### Status Bar
 
 bar {
-   swaybar_command waybar --config ~/.config/waybar/sway.jsonc --style ~/.config/waybar/sway.css
+   swaybar_command waybar
 }
 
 ### Settings
@@ -265,8 +265,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 
 # Start background services
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec elephant
-exec walker --gapplication-service
+exec foot --server
 
 # Startup applications on specific workspaces
 exec swaymsg "workspace 1; exec --no-startup-id brave;"
