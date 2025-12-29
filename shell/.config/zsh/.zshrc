@@ -1,11 +1,3 @@
-# This file is sourced by interactive shells only.
-# It's the right place for aliases, functions, shell options, prompt settings, and other interactive shell configuration.
-# Environment variables that are only needed for interactive shells can also be defined here.
-
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Uncomment to profile
 # zmodload zsh/zprof
 
@@ -44,8 +36,6 @@ source "$ZDOTDIR/keybindings"
 
 # Plugins ---------------------------------------------------------------------
 
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
 autoload -Uz $ZDOTDIR/plugins/zsh-defer/zsh-defer 
 zsh-defer source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 zsh-defer source $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
@@ -61,8 +51,7 @@ _comp_options+=(globdots)               # Include hidden files.
 
 # Prompt ----------------------------------------------------------------------
 
-# To customize prompt, run `p10k configure` or edit p10k.zsh.
-[[ ! -f "$ZDOTDIR/p10k.zsh" ]] || source "$ZDOTDIR/p10k.zsh"
+[[ -f $ZDOTDIR/prompt.zsh ]] && source "$ZDOTDIR/prompt.zsh"
 
 # Command completions and configs ---------------------------------------------
 
