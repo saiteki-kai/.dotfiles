@@ -17,6 +17,8 @@ export XDG_DATA_HOME=$HOME/.local/share
 
 # home cleanup 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+export STARSHIP_CACHE="$XDG_CACHE_HOME/starship/cache"
 
 # directories
 export PROJECTS_DIR=${HOME}/Documents/03_Projects
